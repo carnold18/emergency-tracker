@@ -3,7 +3,7 @@ class CreateZones < ActiveRecord::Migration[5.2]
     create_table :zones do |t|
       t.string :country
       t.string :state
-      t.integer :zip_code
+      t.string :zip_code
 
       t.timestamps
     end
