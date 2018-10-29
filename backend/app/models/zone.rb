@@ -1,4 +1,4 @@
 class Zone < ApplicationRecord
-    has_many :users
-    has_many :user_emergencies, through: :users
+    has_many :user_zones
+    has_many :users, through: :user_zones
 end
