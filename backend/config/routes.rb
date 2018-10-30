@@ -4,10 +4,8 @@ Rails.application.routes.draw do
   #   namespace :v1 do
       resources :user
       resources :zone
-      resources :state_of_emergency
       resources :post
       resources :user_zone
-      resources :user_emergency
   #   end
   # end
 end

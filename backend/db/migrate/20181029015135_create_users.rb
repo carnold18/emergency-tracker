@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :zip_code
       t.string :country
       t.string :user_type
+      t.integer :status
       t.string :password_digest
       t.belongs_to :zone
 
