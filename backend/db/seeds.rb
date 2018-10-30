@@ -13,5 +13,11 @@ Zone.create(country:"United States", state:"TX", zip_code:"76116")
 Zone.create(country:"United States", state:"TX", zip_code:"76006")
 Zone.create(country:"United States", state:"TX", zip_code:"76007")
 
-User.create(first_name: 'Chris', last_name: 'Arnold', email: 'chris@example.com', phone_number: '8172285979', address_line_1: '1524 Marshall Street', address_line_2: 'Apt 1', city: 'Houston', state: 'TX', zip_code: '77006', country: 'United States', user_type: 'admin', password: 'example', zone_id: 1)
+Post.create(message: "hey", emergency_level:"high", zone_id: 2)
+Post.create(message: "hey", emergency_level:"high", zone_id: 3)
+Post.create(message: "hey2", emergency_level:"high", zone_id: 2)
 
+User.create(first_name: 'Chris', last_name: 'Arnold', email: 'chris@example.com', phone_number: '8172285979', address_line_1: '1524 Marshall Street', address_line_2: 'Apt 1', city: 'Houston', state: 'TX', zip_code: '77006', country: 'United States', user_type: 'admin', password: 'example', zone_id: 1)
+User.create(first_name: 'Janey', last_name: 'Arnold', email: 'janey@example.com', phone_number: '8172285979', address_line_1: '1524 Marshall Street', address_line_2: 'Apt 1', city: 'Houston', state: 'TX', zip_code: '77006', country: 'United States', user_type: 'user', password: 'example', zone_id: 1)
+
+StateOfEmergency.create(status: "HEEELLL")

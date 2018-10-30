@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.string :message
       t.string :emergency_level
-      t.belongs_to :user
+      t.belongs_to :zone
 
       t.timestamps
     end
