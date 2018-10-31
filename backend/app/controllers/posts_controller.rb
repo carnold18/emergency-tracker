@@ -38,6 +38,6 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.fetch(:post, {})
+      params.permit(:message, :status, :zone_id)
     end
 end

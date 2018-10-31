@@ -7,17 +7,180 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Zone.destroy_all
+Post.destroy_all
 User.destroy_all
 
-Zone.create(country:"United States", state:"TX", zip_code:"76116")
-Zone.create(country:"United States", state:"TX", zip_code:"76006")
-Zone.create(country:"United States", state:"TX", zip_code:"76007")
+allZones = {
+    "zones": [
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77001"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77002"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77003"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77004"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77005"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77006"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77007"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77008"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77009"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77010"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77011"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77012"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77013"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77014"
+        },
+        {
+            country:"United States", 
+            state:"TX", 
+            zip_code:"77015"
+        },
+    ]
+}
 
-Post.create(message: "hey", emergency_level:"high", zone_id: 2)
-Post.create(message: "hey", emergency_level:"high", zone_id: 3)
-Post.create(message: "hey2", emergency_level:"high", zone_id: 2)
+allPosts = {
+    "posts": [
+        {
+            message: "Testing 77002", 
+            emergency_level:0, 
+            zone_id: 2
+        },
+        {
+            message: "Testing 77001", 
+            emergency_level:0, 
+            zone_id: 1
+        },
+        {
+            message: "Testing 77002 Message 2", 
+            emergency_level:0, 
+            zone_id: 2
+        },
+        {
+            message: "Testing 77003", 
+            emergency_level:0, 
+            zone_id: 3
+        },
+        {
+            message: "Testing 77009", 
+            emergency_level:0, 
+            zone_id: 9
+        },
+    ]
+}
 
-User.create(first_name: 'Chris', last_name: 'Arnold', email: 'chris@example.com', phone_number: '8172285979', address_line_1: '1524 Marshall Street', address_line_2: 'Apt 1', city: 'Houston', state: 'TX', zip_code: '77006', country: 'United States', user_type: 'admin', password: 'example', zone_id: 1)
-User.create(first_name: 'Janey', last_name: 'Arnold', email: 'janey@example.com', phone_number: '8172285979', address_line_1: '1524 Marshall Street', address_line_2: 'Apt 1', city: 'Houston', state: 'TX', zip_code: '77006', country: 'United States', user_type: 'user', password: 'example', zone_id: 1)
+allUsers = {
+    "users": [
+        {
+            first_name: 'Chris', 
+            last_name: 'Arnold', 
+            email: 'chris@example.com', 
+            phone_number: '8172285979', 
+            address_line_1: '1524 Marshall Street', 
+            address_line_2: 'Apt 1', 
+            city: 'Houston', 
+            state: 'TX', 
+            zip_code: '77006', 
+            country: 'United States', 
+            user_type: 0, 
+            status: 0, 
+            password: 'example', 
+            zone_id: 6
+        },
+        {
+            first_name: 'Janett', 
+            last_name: 'Arnold', 
+            email: 'janett@example.com', 
+            phone_number: '8172285979', 
+            address_line_1: '219 West Alabama Street', 
+            address_line_2: 'Apt 10', 
+            city: 'Houston', 
+            state: 'TX', 
+            zip_code: '77006', 
+            country: 'United States', 
+            user_type: 0, 
+            status: 0, 
+            password: 'example', 
+            zone_id: 6
+        },
+        {
+            first_name: 'Doug', 
+            last_name: 'Arnold', 
+            email: 'doug@example.com', 
+            phone_number: '8172285979', 
+            address_line_1: '1302 Goliad Street', 
+            address_line_2: '', 
+            city: 'Houston', 
+            state: 'TX', 
+            zip_code: '77007', 
+            country: 'United States', 
+            user_type: 0, 
+            status: 0, 
+            password: 'example', 
+            zone_id: 7
+        },
+    ]
+}
 
-StateOfEmergency.create(status: "HEEELLL")
+allZones[:zones].each do |zone|
+    Zone.create(zone)
+end
+
+allPosts[:posts].each do |post|
+    Post.create(post)
+end
+
+allUsers[:users].each do |user|
+    User.create(user)
+end
