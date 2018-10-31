@@ -1,18 +1,15 @@
 class ZonesController < ApplicationController
   before_action :set_zone, only: [:show, :update, :destroy]
 
-  # GET /zones
   def index
     zones = Zone.all
     render json: zones
   end
 
-  # GET /zones/1
   def show
     render json: zone
   end
 
-  # POST /zones
   def create
     zone = Zone.new(zone_params)
 
@@ -23,7 +20,6 @@ class ZonesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /zones/1
   def update
     if zone.update(zone_params)
       render json: zone
@@ -32,19 +28,16 @@ class ZonesController < ApplicationController
     end
   end
 
-  # DELETE /zones/1
   def destroy
     zone.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_zone
       zone = Zone.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
     def zone_params
-      params.fetch(:zone, {})
+      params.permit(:country, :state, :zip_code)
     end
 end
