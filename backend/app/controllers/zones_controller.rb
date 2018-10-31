@@ -1,5 +1,5 @@
 class ZonesController < ApplicationController
-  before_action :set_zone, only: [:show, :update, :destroy]
+  skip_before_action :set_zone, only: [:show, :update, :destroy]
 
   # GET /zones
   def index

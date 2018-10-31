@@ -4,37 +4,38 @@ class EmergenciesController < ApplicationController
   # GET /emergencies
   def index
     emergencies = Emergency.all
-
     render json: emergencies
   end
 
   # GET /emergencies/1
   def show
+    set_emergency
     render json: emergency
   end
 
   # POST /emergencies
   def create
     emergency = Emergency.new(emergency_params)
-
-    if emergency.save
-      render json: emergency, status: :created, location: emergency
-    else
-      render json: emergency.errors, status: :unprocessable_entity
-    end
+    emergency.user = current_user
+    emergency.save
+    render json: {
+      emergency: emergency
+    }
   end
 
   # PATCH/PUT /emergencies/1
   def update
+    set_emergency
     if emergency.update(emergency_params)
       render json: emergency
     else
-      render json: emergency.errors, status: :unprocessable_entity
+      render json: emergency.errors
     end
   end
 
   # DELETE /emergencies/1
   def destroy
+    set_emergency
     emergency.destroy
   end
 
@@ -48,4 +49,6 @@ class EmergenciesController < ApplicationController
     def emergency_params
       params.fetch(:emergency, {})
     end
+
+    #should i list all of my params here?
 end
