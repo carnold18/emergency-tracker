@@ -94,32 +94,32 @@ allPosts = {
     "posts": [
         {
             message: "Testing 77002", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 2
         },
         {
             message: "Testing 77001", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 1
         },
         {
             message: "Testing 77007", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 7
         },
         {
             message: "Testing 77003", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 3
         },
         {
             message: "Testing 77006", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 6
         },
         {
             message: "Testing 77006 Message 2", 
-            emergency_level:0, 
+            status:0, 
             zone_id: 6
         },
     ]
