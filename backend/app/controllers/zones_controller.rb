@@ -1,10 +1,9 @@
 class ZonesController < ApplicationController
-  skip_before_action :set_zone, only: [:show, :update, :destroy]
+  before_action :set_zone, only: [:show, :update, :destroy]
 
   # GET /zones
   def index
     zones = Zone.all
-
     render json: zones
   end
 
