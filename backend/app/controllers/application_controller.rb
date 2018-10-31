@@ -32,7 +32,7 @@ class ApplicationController < ActionController::API
     end
 
     def authorized
-        render json: { error: 'Please Log In' }, status: 401 !logged_in?
+        render json: { error: 'Please Log In' }, status: 401 if !logged_in?
     end
 
 end

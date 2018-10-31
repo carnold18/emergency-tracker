@@ -8,4 +8,8 @@ Rails.application.routes.draw do
       resources :user_zone
   #   end
   # end
+
+  post '/login', to: 'auth#create'
+  get '/profile', to: 'users#profile'
+  
 end
