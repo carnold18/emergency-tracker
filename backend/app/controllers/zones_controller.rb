@@ -14,9 +14,9 @@ class ZonesController < ApplicationController
     zone = Zone.new(zone_params)
 
     if zone.save
-      render json: zone, status: :created, location: zone
+      render json: zone
     else
-      render json: zone.errors, status: :unprocessable_entity
+      render json: zone.errors
     end
   end
 
@@ -24,7 +24,7 @@ class ZonesController < ApplicationController
     if zone.update(zone_params)
       render json: zone
     else
-      render json: zone.errors, status: :unprocessable_entity
+      render json: zone.errors
     end
   end
 
