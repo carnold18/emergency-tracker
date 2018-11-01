@@ -30,3 +30,8 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  border-color: #3a4c6e;
+  border-width: 0.2px
+}

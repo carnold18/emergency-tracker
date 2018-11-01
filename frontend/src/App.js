@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
+import Header from './Header';
+import LoginForm from './LoginForm';
+
 
 class App extends Component {
 
@@ -76,7 +79,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <LoginForm />
+        <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
       </div>
     );
   }
