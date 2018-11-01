@@ -2,7 +2,7 @@ class ZonesController < ApplicationController
   before_action :set_zone, only: [:show, :update, :destroy]
 
   def index
-    zones = Zone.all
+    zones = current_user.zones.push(current_user.zone)
     render json: zones
   end
 
@@ -14,14 +14,6 @@ class ZonesController < ApplicationController
     zone = Zone.new(zone_params)
 
     if zone.save
-      render json: zone
-    else
-      render json: zone.errors
-    end
-  end
-
-  def update
-    if zone.update(zone_params)
       render json: zone
     else
       render json: zone.errors
