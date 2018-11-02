@@ -5,8 +5,8 @@ class LoginForm extends Component {
     render() {
         return (
             <div className="header">
-                <h4 class="align-center">Already a Member?</h4>
-                <h5 class="align-center">Sign In:</h5>
+                <h4 className="align-center">Already a Member?</h4>
+                <h5 className="align-center">Sign In:</h5>
                 <div className="login">
                     <form onSubmit={this.props.logIn}>
                         <input
@@ -21,7 +21,7 @@ class LoginForm extends Component {
                             placeholder="password"
                             name="password"
                         />
-                        <input type="submit" class="button small special align-center"/>
+                        <input type="submit" className="button small special align-center"/>
                     </form>
                 </div>
             </div>

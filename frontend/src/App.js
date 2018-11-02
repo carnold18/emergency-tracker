@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     email: "",
     password: "",
-    currentUser: {}
+    currentUser: {},
+    isLoggedIn: false
   }
 
   componentDidMount() {
@@ -54,7 +55,8 @@ class App extends Component {
         if (!data.error) {
           localStorage.token = data.token;
           this.setState({
-            currentUser: data.user
+            currentUser: data.user,
+            isLoggedIn: !this.state.isLoggedIn
           });
         } else {
           this.setState({
@@ -70,7 +72,8 @@ class App extends Component {
     this.setState({
       email: "",
       password: "",
-      currentUser: {}
+      currentUser: {},
+      isLoggedIn: !this.state.isLoggedIn
     })
     localStorage.token = "";
   }
