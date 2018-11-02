@@ -8,6 +8,7 @@ class Header extends Component {
             <div className="header">
                 <h1>MobileEyes</h1>
                 <h2>Houston</h2>
+                <button onClick={event => this.props.logOut()}>Logout</button>
             </div>
         )
     }
