@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header';
 import LoginForm from './LoginForm';
 import UserContainer from './UserContainer';
+import AdminContainer from './AdminContainer';
 
 class App extends Component {
 
@@ -78,12 +79,53 @@ class App extends Component {
     localStorage.token = "";
   }
 
+  changeStatus0 = () => {
+    // console.log(this.state.currentUser.id)
+    fetch("http://localhost:3000/users/"+this.state.currentUser.id, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: 0
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+  }
+
+  changeStatus1 = () => {
+    fetch("http://localhost:3000/users/"+this.state.currentUser.id, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: 1
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+  }
+
+  changeStatus2 = () => {
+    fetch("http://localhost:3000/users/"+this.state.currentUser.id, {
+      method: "PATCH",
+      body: JSON.stringify({
+        status: 2
+      }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Header logOut={this.logOut}/>
         <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
-        <UserContainer />
+        <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
+        <AdminContainer />
       </div>
     );
   }

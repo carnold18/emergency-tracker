@@ -33,14 +33,14 @@ class Dropdown extends Component {
                 <div className="dropdown-button" onClick={this.showDropdownMenu}>Emergency Status</div>
                 {this.state.displayMenu ? (
                     <ul>
-                        <li className="low">Low</li>
-                        <li className="medium">Potential Danger</li>
-                        <li className="high">Extreme Danger</li>
+                        <li className="low" onClick={this.props.changeStatus0}>Low</li>
+                        <li className="medium" onClick={this.props.changeStatus1}>Potential Danger</li>
+                        <li className="high" onClick={this.props.changeStatus2}>Extreme Danger</li>
                     </ul>
                 ) : null
                 }
             </div>
-        )
+        );
     }
 }
 

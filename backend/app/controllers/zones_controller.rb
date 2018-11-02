@@ -10,6 +10,11 @@ class ZonesController < ApplicationController
     render json: zone
   end
 
+  # /zones?search_term=77546
+  def search
+    render json: Zone.where("zip_code LIKE '%?%'", params[:search_term])
+  end
+
   def create
     zone = Zone.new(zone_params)
 
