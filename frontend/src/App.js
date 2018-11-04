@@ -11,7 +11,8 @@ class App extends Component {
     email: "",
     password: "",
     currentUser: {},
-    isLoggedIn: false
+    isLoggedIn: false,
+    zones: []
   }
 
   componentDidMount() {
@@ -29,7 +30,21 @@ class App extends Component {
           })
         }
     })
-      // console.log(localStorage.token)
+  }
+
+  getZones = () => {
+    fetch("http://localhost:3000/zones", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    })
+      .then(response => response.json())
+      .then(zones => {
+          this.setState({
+            zones: zones
+          })
+      })
   }
 
   handleChange = event => {
@@ -68,8 +83,6 @@ class App extends Component {
   };
 
   logOut = () => {
-    // event.preventDefault();
-    // debugger
     this.setState({
       email: "",
       password: "",

@@ -2,11 +2,13 @@ class ZonesController < ApplicationController
   before_action :set_zone, only: [:show, :update, :destroy]
 
   def index
-    zones = current_user.zones.push(current_user.zone)
+    # zones = current_user.zones.push(current_user.zone)
+    zones = Zone.all
     render json: zones
   end
 
   def show
+    zone = Zone.find(params[:id])
     render json: zone
   end
 
