@@ -3,7 +3,15 @@ import Select from 'react-select';
 
 class ZipCodeSelector extends Component {
 
+    state = {
+        selectedZones: []
+    }
+
     render() {
+
+        this.props.allZones.map(zone => (
+            value: ${zone.zip_code}, label: 'Chocolate'
+        ))
 
         const options = [
             { value: 'chocolate', label: 'Chocolate' },
@@ -13,7 +21,7 @@ class ZipCodeSelector extends Component {
 
         return (
         <div>
-            <Select options={options} onChange={this.props.getZones()}/>
+            <Select options={options} onChange={this.props.getZones()} addZone={this.addZone}/>
         </div>
         )
     }

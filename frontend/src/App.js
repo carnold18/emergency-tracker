@@ -12,7 +12,7 @@ class App extends Component {
     password: "",
     currentUser: {},
     isLoggedIn: false,
-    zones: []
+    allZones: []
   }
 
   componentDidMount() {
@@ -42,7 +42,7 @@ class App extends Component {
       .then(response => response.json())
       .then(zones => {
           this.setState({
-            zones: zones
+            allZones: zones
           })
       })
   }
