@@ -12,7 +12,8 @@ class App extends Component {
     password: "",
     currentUser: {},
     isLoggedIn: false,
-    allZones: []
+    allZones: [],
+    isLoaded: false
   }
 
   componentDidMount() {
@@ -39,9 +40,11 @@ class App extends Component {
       }
     })
       .then(response => response.json())
+      // .then(console.log)
       .then(zones => {
           this.setState({
-            allZones: zones
+            allZones: zones,
+            isLoaded: true
           })
       })
 
@@ -149,14 +152,18 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <Header logOut={this.logOut}/>
-        <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
-        <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
-        <AdminContainer allZones={this.state.allZones} />
-      </div>
-    );
+      return (
+        <div className="App">
+          { this.state.isLoaded ?
+            <div>
+              <Header logOut={this.logOut}/>
+              <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
+              <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
+              <AdminContainer allZones={this.state.allZones} /> 
+            </div> 
+            : null }
+        </div>
+      )
   }
 }
 

@@ -12,27 +12,21 @@ class ZipCodeSelector extends Component {
         this.setState({ 
             selectedZone: selectedZone,
             selectedZones: [selectedZone, ...this.state.selectedZones]
-        });
-        console.log(`Option selected:`, selectedZone);
+        })
+        console.log(`Zone selected:`, selectedZone);
     }
 
-    render() {
-        const zipCodes = []
-        this.props.allZones.map(zone => {
-           return zipCodes.push(`{ value: '${zone.zip_code}', label: '${zone.zip_code}' }`)
-        })
-            // .then(console.log(zipCodes))
 
-        // const options = [
-        //     { value: 'chocolate', label: 'Chocolate' },
-        //     { value: 'strawberry', label: 'Strawberry' },
-        //     { value: 'vanilla', label: 'Vanilla' }
-        // ]
+
+    render() {
+        const options = []
+        this.props.allZones.map(zone => (
+            options.push({ value: `${zone.zip_code}`, label: `${zone.zip_code}` })
+        ))
+        console.log(options) 
 
         return (
-        <div>
-            <Select value={this.state.selectedZone} zipCodes={zipCodes} onChange={this.handleChange} />
-        </div>
+            <Select value={this.state.selectedZone} options={options} onChange={this.handleChange} />
         )
     }
 }
