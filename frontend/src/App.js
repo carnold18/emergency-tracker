@@ -16,6 +16,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+
     fetch("http://localhost:3000/profile", {
       method: "GET",
       headers: {
@@ -30,9 +31,7 @@ class App extends Component {
           })
         }
     })
-  }
 
-  getZones = () => {
     fetch("http://localhost:3000/zones", {
       method: "GET",
       headers: {
@@ -45,7 +44,24 @@ class App extends Component {
             allZones: zones
           })
       })
+
   }
+
+  // getZones = (event) => {
+  //   event.preventDefault();
+  //   fetch("http://localhost:3000/zones", {
+  //     method: "GET",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.token}`
+  //     }
+  //   })
+  //     .then(response => response.json())
+  //     .then(zones => {
+  //         this.setState({
+  //           allZones: zones
+  //         })
+  //     })
+  // }
 
   handleChange = event => {
     this.setState({
@@ -138,7 +154,7 @@ class App extends Component {
         <Header logOut={this.logOut}/>
         <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
         <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
-        <AdminContainer />
+        <AdminContainer allZones={this.state.allZones} />
       </div>
     );
   }
