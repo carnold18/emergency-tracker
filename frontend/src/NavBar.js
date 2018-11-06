@@ -7,8 +7,6 @@ class NavBar extends Component {
         return (
             <div>
                 <ul>
-                    {/* <li><Home /></li>
-                    <li><UserContainer /></li> */}
                     <li><Logout logOut={this.props.logOut} /></li>
                 </ul>
             </div>
