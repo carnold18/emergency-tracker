@@ -159,7 +159,7 @@ class App extends Component {
               <Header logOut={this.logOut}/>
               <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
               <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
-              <AdminContainer allZones={this.state.allZones} /> 
+              <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
             </div> 
             : null }
         </div>

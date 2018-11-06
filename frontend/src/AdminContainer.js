@@ -11,7 +11,7 @@ class AdminContainer extends Component {
                 containerElement={<div style={{ height: `400px` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
                 />
-                <ZipCodeSelector allZones={this.props.allZones} />
+                <ZipCodeSelector allZones={this.props.allZones} currentUser={this.props.currentUser}/>
             </div>
         )
     }

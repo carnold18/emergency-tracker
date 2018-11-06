@@ -9,31 +9,43 @@ class ZipCodeSelector extends Component {
         userZones: []
     }
 
-    handleChange = (selectedZone) => {
-        // console.log(selectedZone)
+    handleChange = async (selectedZone) => {
         // debugger
-        this.props.allZones.find( zone => 
+       await this.props.allZones.find( zone => 
             ( zone.zip_code === selectedZone.value ? 
                 this.setState({
                     userZones: [zone,...this.state.userZones],
                     selectedZone: selectedZone,
                     selectedZones: [selectedZone, ...this.state.selectedZones]
                 }) : null ) )
-            // .then(fetch("http://localhost:3000/user_zones", {
-            //     method: "POST",
-            //     body: JSON.stringify({
-            //         user_id: this.props.currentUser.id,
-            //         zone_id: this.state.
-            //       }),
-            //       headers: {
-            //         "Content-Type": "application/json",
-            //         Authorization: `Bearer ${localStorage.token}`
-            //       }
-            // }))
         console.log(`Zone selected:`, selectedZone)
         console.log(this.state.userZones)
+
+        await this.createUserZone()
+
     }
 
+    createUserZone = () => {
+        // debugger
+        console.log(this.props.currentUser.id)
+        console.log(this.state.userZones[0].id)
+        fetch("http://localhost:3000/user_zones", {
+                method: "POST",
+                body: JSON.stringify({
+                    user_id: this.props.currentUser.id,
+                    zone_id: this.state.userZones[0].id
+                  }),
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.token}`
+                  }
+            })
+            console.log('post sent to backend to create UserZone')
+    }
+
+    renderZoneMap = () => {
+
+    }
 
 
     render() {
