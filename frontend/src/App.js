@@ -4,6 +4,7 @@ import Header from './Header';
 import LoginForm from './LoginForm';
 import UserContainer from './UserContainer';
 import AdminContainer from './AdminContainer';
+import NavBar from './NavBar';
 
 class App extends Component {
 
@@ -156,7 +157,8 @@ class App extends Component {
         <div className="App">
           { this.state.isLoaded ?
             <div>
-              <Header logOut={this.logOut}/>
+              <Header />
+              <NavBar logOut={this.logOut} />
               <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
               <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
               <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
