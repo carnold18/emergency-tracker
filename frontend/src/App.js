@@ -205,6 +205,7 @@ class App extends Component {
           {/* { this.state.isLoaded ? */}
             {/* <div> */}
             <NavBar logOut={this.logOut} />
+            <Header />
             <Switch>
               <Route path="/login" render={() =>  
                 <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
@@ -218,15 +219,17 @@ class App extends Component {
               <Route path="/admin" render={() =>  
                 <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
               }/>
-              <Route path="/" render={() => {
-                if(localStorage.token){
-                  switch(this.state.currentUser.user_type){
-                    case 0:
+              <Route path="/" render={ () => {
+                if(localStorage.token) {
+                  switch(this.state.currentUser.user_type) {
+                    case 0: 
                       return <Redirect to={{pathname:'/index'}} />
-                    break;
+                    // break;
                     case 1:
-                    return <Redirect to={{pathname:'/admin'}} />
-                    break;
+                      return <Redirect to={{pathname:'/admin'}} />
+                    // break;
+                    default:
+                      return null;
                   }
                 } else {
                   return <Redirect to={{pathname:'/login'}} />

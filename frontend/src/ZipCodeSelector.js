@@ -40,7 +40,7 @@ class ZipCodeSelector extends Component {
                     Authorization: `Bearer ${localStorage.token}`
                   }
             })
-            console.log('post sent to backend to create UserZone')
+            // console.log('post sent to backend to create UserZone')
     }
 
     renderZoneMap = () => {
