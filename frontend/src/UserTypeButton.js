@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 
 class UserTypeButton extends Component {
 
-render() {
-    return (
-        <div>
-            <button className="button" onClick={this.props.submitAdminRequest()}>Request Admin Status</button>
-        </div>
-    )
-}
+    submitAdminRequest = () => {
+        console.log('Request Submitted')
+    }
+
+    render() {
+        return (
+            <div>
+                <button className="button" onClick={this.submitAdminRequest}>Request Admin Status</button>
+            </div>
+        )
+    }
 
 }
 

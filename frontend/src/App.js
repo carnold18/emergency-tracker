@@ -5,12 +5,26 @@ import LoginForm from './LoginForm';
 import UserContainer from './UserContainer';
 import AdminContainer from './AdminContainer';
 import NavBar from './NavBar';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Signup from './Signup';
 
 class App extends Component {
 
   state = {
-    email: "",
-    password: "",
+    email: null,
+    password: null,
+    phone_number: null,
+    first_name: null,
+    last_name: null,
+    address_line_1: null,
+    address_line_2: null,
+    city: null,
+    state: null,
+    zip_code: null,
+    country: null,
+    user_type: null,
+    status: null,
+    zone_id: null,
     currentUser: {},
     isLoggedIn: false,
     allZones: [],
@@ -102,6 +116,38 @@ class App extends Component {
       });
   };
 
+  signUp = async (event) => {
+    event.preventDefault();
+
+    const zone = this.state.zip_code.split("").slice(3).join("");
+
+    await fetch("http://localhost:3000/users", {
+      method: "POST",
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password,
+        phone_number: this.state.phone_number,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        address_line_1: this.state.address_line_1,
+        address_line_2: this.state.address_line_2,
+        city: this.state.city,
+        state: this.state.state,
+        zip_code: this.state.zip_code,
+        country: this.state.country,
+        user_type: 0,
+        status: 0,
+        zone_id: parseInt(zone)
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+
+    await this.login()
+
+  }
+
   logOut = () => {
     this.setState({
       email: "",
@@ -154,17 +200,43 @@ class App extends Component {
 
   render() {
       return (
+        <Router>
         <div className="App">
-          { this.state.isLoaded ?
-            <div>
-              <Header />
-              <NavBar logOut={this.logOut} />
-              <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
-              <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
-              <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
-            </div> 
-            : null }
+          {/* { this.state.isLoaded ? */}
+            {/* <div> */}
+            <NavBar logOut={this.logOut} />
+            <Switch>
+              <Route path="/login" render={() =>  
+                <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
+              }/>
+              <Route path="/signup" render={() =>  
+                <Signup signUp={this.signUp} handleChange={this.handleChange} />
+              }/>
+              <Route path="/index" render={() =>  
+                <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
+              }/>
+              <Route path="/admin" render={() =>  
+                <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
+              }/>
+              <Route path="/" render={() => {
+                if(localStorage.token){
+                  switch(this.state.currentUser.user_type){
+                    case 0:
+                      return <Redirect to={{pathname:'/index'}} />
+                    break;
+                    case 1:
+                    return <Redirect to={{pathname:'/admin'}} />
+                    break;
+                  }
+                } else {
+                  return <Redirect to={{pathname:'/login'}} />
+                }
+              }} />
+            </Switch>
+            {/* </div>  */}
+            {/* : null } */}
         </div>
+        </Router>
       )
   }
 }
