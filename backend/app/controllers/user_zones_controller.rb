@@ -22,6 +22,10 @@ class UserZonesController < ApplicationController
 
   private
 
+    def set_user_zone
+      zone = Zone.find(params[:id])
+    end
+
     def user_zone_params
       params.permit(:user_id, :zone_id)
     end
