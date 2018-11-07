@@ -42,7 +42,7 @@ class AdminContainer extends Component {
                         />
                         <MessagePost currentUser={this.props.currentUser} />
                     </div>
-                ) : null }
+                ) : null}
             </div>
         )
     }

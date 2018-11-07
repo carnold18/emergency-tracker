@@ -95,32 +95,32 @@ allPosts = {
         {
             message: "Testing 77002", 
             status:0, 
-            zone_id: 2
+            zone_id: 02
         },
         {
             message: "Testing 77001", 
             status:0, 
-            zone_id: 1
+            zone_id: 01
         },
         {
             message: "Testing 77007", 
             status:0, 
-            zone_id: 7
+            zone_id: 07
         },
         {
             message: "Testing 77003", 
             status:0, 
-            zone_id: 3
+            zone_id: 03
         },
         {
             message: "Testing 77006", 
             status:0, 
-            zone_id: 6
+            zone_id: 06
         },
         {
             message: "Testing 77006 Message 2", 
             status:0, 
-            zone_id: 6
+            zone_id: 06
         },
     ]
 }
@@ -132,48 +132,72 @@ allUsers = {
             last_name: 'Arnold', 
             email: 'chris@example.com', 
             phone_number: '8172285979', 
-            address_line_1: '1524 Marshall Street', 
-            address_line_2: 'Apt 1', 
+            address_line_1: '1524', 
+            address_line_2: 'Marshall Street', 
             city: 'Houston', 
             state: 'TX', 
             zip_code: '77006', 
-            country: 'United States', 
-            user_type: 0, 
+            country: 'United States',
+            lat: 29.7397412,
+            lng: -95.3988021,
+            user_type: 1, 
             status: 0, 
             password: 'example', 
-            zone_id: 6
+            zone_id: 06
         },
         {
             first_name: 'Janett', 
             last_name: 'Arnold', 
             email: 'janett@example.com', 
             phone_number: '8172285979', 
-            address_line_1: '219 West Alabama Street', 
-            address_line_2: 'Apt 10', 
+            address_line_1: '219', 
+            address_line_2: 'West Alabama Street', 
             city: 'Houston', 
             state: 'TX', 
             zip_code: '77006', 
-            country: 'United States', 
+            country: 'United States',
+            lat: 29.7386521,
+            lng: -95.38287199999999, 
             user_type: 0, 
-            status: 0, 
+            status: 1, 
             password: 'example', 
-            zone_id: 6
+            zone_id: 06
         },
         {
             first_name: 'Doug', 
             last_name: 'Arnold', 
             email: 'doug@example.com', 
             phone_number: '8172285979', 
-            address_line_1: '1302 Goliad Street', 
-            address_line_2: '', 
+            address_line_1: '1302', 
+            address_line_2: 'Goliad Street', 
             city: 'Houston', 
             state: 'TX', 
             zip_code: '77007', 
-            country: 'United States', 
+            country: 'United States',
+            lat: 29.7702419,
+            lng: -95.3698981,
             user_type: 0, 
-            status: 0, 
+            status: 2, 
             password: 'example', 
-            zone_id: 7
+            zone_id: 07
+        },
+        {
+            first_name: 'Jessie', 
+            last_name: 'Arnold', 
+            email: 'jessie@example.com', 
+            phone_number: '8172285979', 
+            address_line_1: '611', 
+            address_line_2: 'Hawthorne Street', 
+            city: 'Houston', 
+            state: 'TX', 
+            zip_code: '77006', 
+            country: 'United States',
+            lat: 229.7422549,
+            lng: -95.38690009999999,
+            user_type: 0, 
+            status: 2, 
+            password: 'example', 
+            zone_id: 06
         },
     ]
 }
