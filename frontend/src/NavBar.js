@@ -5,10 +5,10 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div>
-                <ul>
-                    <li><Logout logOut={this.props.logOut} /></li>
-                </ul>
+            <div className="navbar">
+                <h2>Welcome, {this.props.currentUser.first_name}.</h2>
+                <h2>MobilEyes -> Houston</h2>
+                <Logout logOut={this.props.logOut} />
             </div>
         )
     }

@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header';
 import LoginForm from './LoginForm';
 import UserContainer from './UserContainer';
 import AdminContainer from './AdminContainer';
-import NavBar from './NavBar';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Signup from './Signup';
 
@@ -119,22 +117,22 @@ class App extends Component {
   signUp = async (event) => {
     event.preventDefault();
 
-    const zone = this.state.zip_code.split("").slice(3).join("");
+    const zone = this.state.currentUser.zip_code.split("").slice(3).join("");
 
     await fetch("http://localhost:3000/users", {
       method: "POST",
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password,
-        phone_number: this.state.phone_number,
-        first_name: this.state.first_name,
-        last_name: this.state.last_name,
-        address_line_1: this.state.address_line_1,
-        address_line_2: this.state.address_line_2,
-        city: this.state.city,
-        state: this.state.state,
-        zip_code: this.state.zip_code,
-        country: this.state.country,
+        email: this.state.currentUser.email,
+        password: this.state.currentUser.password,
+        phone_number: this.state.currentUser.phone_number,
+        first_name: this.state.currentUser.first_name,
+        last_name: this.state.currentUser.last_name,
+        address_line_1: this.state.currentUser.address_line_1,
+        address_line_2: this.state.currentUser.address_line_2,
+        city: this.state.currentUser.city,
+        state: this.state.currentUser.state,
+        zip_code: this.state.currentUser.zip_code,
+        country: this.state.currentUser.country,
         user_type: 0,
         status: 0,
         zone_id: parseInt(zone)
@@ -202,10 +200,6 @@ class App extends Component {
       return (
         <Router>
         <div className="App">
-          {/* { this.state.isLoaded ? */}
-            {/* <div> */}
-            <NavBar logOut={this.logOut} />
-            <Header />
             <Switch>
               <Route path="/login" render={() =>  
                 <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
@@ -213,8 +207,8 @@ class App extends Component {
               <Route path="/signup" render={() =>  
                 <Signup signUp={this.signUp} handleChange={this.handleChange} />
               }/>
-              <Route path="/index" render={() =>  
-                <UserContainer changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
+              <Route path="/user" render={() =>  
+                <UserContainer logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
               }/>
               <Route path="/admin" render={() =>  
                 <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
@@ -223,7 +217,7 @@ class App extends Component {
                 if(localStorage.token) {
                   switch(this.state.currentUser.user_type) {
                     case 0: 
-                      return <Redirect to={{pathname:'/index'}} />
+                      return <Redirect to={{pathname:'/user'}} />
                     // break;
                     case 1:
                       return <Redirect to={{pathname:'/admin'}} />
@@ -236,8 +230,6 @@ class App extends Component {
                 }
               }} />
             </Switch>
-            {/* </div>  */}
-            {/* : null } */}
         </div>
         </Router>
       )

@@ -2,14 +2,42 @@ import React, { Component } from 'react';
 
 class ZoneMessages extends Component {
 
+    state = {
+        posts: []
+    }
+
+    componentDidMount() {
+        let zonePosts = []
+
+        fetch("http://localhost:3000/posts", {
+            method: "GET",
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`
+            }
+        })
+      .then(response => response.json())
+      .then(posts => (
+          posts.forEach(post => 
+              this.props.currentUser.zone_id === post.zone_id ?
+              zonePosts.push(post) : null
+          )
+      ))
+        
+      this.setState({
+          posts: zonePosts
+      })
+
+    }
+
     render() {
+        console.log(this.state.posts)
         return (
             <div>
-                <ul>
-                    <li>Message 1</li>
-                    <li>Message 2</li>
-                    <li>Message 3</li>
-                </ul>
+                {this.state.posts.map(
+                    post =>
+                    <p>${post.message}</p>
+                )
+                }
             </div>
         )
     }
