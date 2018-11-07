@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class ZoneMessages extends Component {
 
     state = {
-        posts: []
+        posts: [],
+        postsCreated: false
     }
 
     componentDidMount() {
@@ -24,7 +25,8 @@ class ZoneMessages extends Component {
       ))
         
       this.setState({
-          posts: zonePosts
+          posts: zonePosts,
+          postsCreated: true
       })
 
     }
@@ -33,10 +35,9 @@ class ZoneMessages extends Component {
         console.log(this.state.posts)
         return (
             <div>
-                {this.state.posts.map(
-                    post =>
-                    <p>${post.message}</p>
-                )
+                { this.state.postsCreated ? this.state.posts.map(post => {
+                    return <p>{post.message}</p>
+                }) : null
                 }
             </div>
         )
