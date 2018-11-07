@@ -4,6 +4,16 @@ class UserTypeButton extends Component {
 
     submitAdminRequest = () => {
         console.log('Request Submitted')
+        // fetch("http://localhost:3000/users/"+this.state.currentUser.id, {
+        //     method: "PATCH",
+        //     body: JSON.stringify({
+        //         user_type: 1
+        //     }),
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         Authorization: `Bearer ${localStorage.token}`
+        //     }
+        // })
     }
 
     render() {

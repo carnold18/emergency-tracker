@@ -8,6 +8,7 @@ class ZoneMessages extends Component {
     }
 
     componentDidMount() {
+    // getPosts = () => {
         let zonePosts = []
 
         fetch("http://localhost:3000/posts", {
@@ -28,8 +29,9 @@ class ZoneMessages extends Component {
           posts: zonePosts,
           postsCreated: true
       })
-
+      
     }
+    // }
 
     render() {
         console.log(this.state.posts)
@@ -37,7 +39,7 @@ class ZoneMessages extends Component {
             <div>
                 { this.state.postsCreated ? this.state.posts.map(post => {
                     return <p>{post.message}</p>
-                }) : null
+                }) : <p>Currently no messages.</p>
                 }
             </div>
         )

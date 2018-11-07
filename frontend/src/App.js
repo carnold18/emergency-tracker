@@ -211,7 +211,7 @@ class App extends Component {
                 <UserContainer logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
               }/>
               <Route path="/admin" render={() =>  
-                <AdminContainer allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
+                <AdminContainer logOut={this.logOut} allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
               }/>
               <Route path="/" render={ () => {
                 if(localStorage.token) {

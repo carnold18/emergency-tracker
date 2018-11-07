@@ -15,7 +15,7 @@ class UserContainer extends Component {
                 <Dropdown changeStatus0={this.props.changeStatus0} changeStatus1={this.props.changeStatus1} changeStatus2={this.props.changeStatus2} />
                 <ZoneMessages currentUser={this.props.currentUser} />
                 <UserInformation currentUser={this.props.currentUser} />
-                <UserTypeButton />
+                <UserTypeButton currentUser={this.props.currentUser} />
             </div>
         );
     }
