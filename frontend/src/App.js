@@ -60,7 +60,6 @@ class App extends Component {
             isLoaded: true
           })
       })
-
   }
 
   // getZones = (event) => {
@@ -82,8 +81,8 @@ class App extends Component {
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    });
-  };
+    })
+  }
 
   logIn = event => {
     event.preventDefault();

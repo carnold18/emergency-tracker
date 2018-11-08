@@ -7,35 +7,43 @@ import MessagePost from './MessagePost';
 class AdminContainer extends Component {
 
     state = {
-        id: null
+        zoneUsers: []
     }
-    // componentDidMount() {
-    //     console.log('where the hell am i')
-    getUserZones = () => {
 
-        fetch("http://localhost:3000/user_zones/"+this.state.id, {
-            method: "GET",
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`
-            }
+    getZoneUsers = () => {
+        fetch("http://localhost:3000/zoneUsers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          id: this.props.currentUser.zone_id
         })
-        .then(response => response.json())
-        .then(console.log)
+      })
+      .then(response => response.json())
+      .then(console.log)
+      .then(zones => {
+          this.setState({
+            zoneUsers: zones
+          })
+      })
     }
-    // }
 
     render() {
+
         console.log(this.props.currentUser.id)
         console.log(this.props.currentUser.user_type)
+        console.log(this.props.currentUser.zone_id)
 
         return (
             
             <div>
                 { this.props.currentUser.user_type > 0 ? (
-                    <div>
+                    <div onPointerOver={() => this.getZoneUsers()}>
                         <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
                         <ZipCodeSelector allZones={this.props.allZones} currentUser={this.props.currentUser}/>
-                        <Map googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                        <Map zoneUsers={this.state.zoneUsers} googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
