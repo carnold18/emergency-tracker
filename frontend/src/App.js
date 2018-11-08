@@ -62,22 +62,6 @@ class App extends Component {
       })
   }
 
-  // getZones = (event) => {
-  //   event.preventDefault();
-  //   fetch("http://localhost:3000/zones", {
-  //     method: "GET",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.token}`
-  //     }
-  //   })
-  //     .then(response => response.json())
-  //     .then(zones => {
-  //         this.setState({
-  //           allZones: zones
-  //         })
-  //     })
-  // }
-
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value

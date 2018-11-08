@@ -23,6 +23,8 @@ class ZipCodeSelector extends Component {
 
         await this.createUserZone()
 
+        this.props.getZoneUsers(selectedZone)
+
     }
 
     createUserZone = () => {
@@ -43,10 +45,6 @@ class ZipCodeSelector extends Component {
             // console.log('post sent to backend to create UserZone')
     }
 
-    renderZoneMap = () => {
-
-    }
-
 
     render() {
         const options = []
@@ -56,7 +54,7 @@ class ZipCodeSelector extends Component {
         // console.log(options) 
 
         return (
-            <Select value={this.state.selectedZone} options={options} onChange={this.handleChange} />
+            <Select value={this.selectedZone} options={options} onChange={(this.handleChange)} />
         )
     }
 }

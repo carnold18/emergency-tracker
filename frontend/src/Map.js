@@ -10,13 +10,17 @@ class Map extends Component {
     }
 
     render() {
+        console.log(this.props.zoneUsers.flat())
         return (
             <GoogleMap
                 defaultZoom={14}
                 defaultCenter={{ lat: 29.7604, lng: -95.3698 }}>
-                <Marker position={{ lat: 29.7604, lng: -95.3698 }} 
-                    
-                />
+                {
+                    this.props.zoneUsers.flat().map(user => {
+                       return <Marker position={{ lat: user.lat, lng: user.lng }} />
+                    })
+                }
+                <Marker position={{ lat: 29.7604, lng: -95.3698 }} />
             </GoogleMap>
         )
     }
