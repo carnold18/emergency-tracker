@@ -17,7 +17,7 @@ class AdminContainer extends Component {
     getZoneUsers = () => {
 
         const id = parseInt(this.state.selectedZone.split("").slice(2).join(""))
-        // console.log(id)
+        console.log(id)
 
         fetch("http://localhost:3000/zoneUsers", {
         method: "POST",
@@ -47,8 +47,8 @@ class AdminContainer extends Component {
                     selectedZone: selectedZone.innerText,
                     selectedZones: [selectedZone.innerText, ...this.state.selectedZones]
                 }) : null ) )
-        // console.log(`Zone selected:`, selectedZone.innerText)
-        // console.log(this.state.userZones)
+        console.log(`Zone selected:`, selectedZone.innerText)
+        console.log(this.state.userZones)
 
         await this.createUserZone()
 

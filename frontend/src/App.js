@@ -12,7 +12,10 @@ class App extends Component {
     currentUser: {},
     isLoggedIn: false,
     allZones: [],
-    isLoaded: false
+    isLoaded: false,
+    email: "",
+    password: "",
+    loginError: "",
   }
 
   componentDidMount() {
@@ -56,7 +59,7 @@ class App extends Component {
 
   logIn = event => {
     event.preventDefault();
-
+    
     fetch("http://localhost:3000/login", {
       method: "POST",
       body: JSON.stringify({
