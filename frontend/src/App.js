@@ -9,20 +9,6 @@ import Signup from './Signup';
 class App extends Component {
 
   state = {
-    email: null,
-    password: null,
-    phone_number: null,
-    first_name: null,
-    last_name: null,
-    address_line_1: null,
-    address_line_2: null,
-    city: null,
-    state: null,
-    zip_code: null,
-    country: null,
-    user_type: null,
-    status: null,
-    zone_id: null,
     currentUser: {},
     isLoggedIn: false,
     allZones: [],
@@ -96,38 +82,6 @@ class App extends Component {
         }
       });
   };
-
-  signUp = async (event) => {
-    event.preventDefault();
-
-    const zone = this.state.currentUser.zip_code.split("").slice(3).join("");
-
-    await fetch("http://localhost:3000/users", {
-      method: "POST",
-      body: JSON.stringify({
-        email: this.state.currentUser.email,
-        password: this.state.currentUser.password,
-        phone_number: this.state.currentUser.phone_number,
-        first_name: this.state.currentUser.first_name,
-        last_name: this.state.currentUser.last_name,
-        address_line_1: this.state.currentUser.address_line_1,
-        address_line_2: this.state.currentUser.address_line_2,
-        city: this.state.currentUser.city,
-        state: this.state.currentUser.state,
-        zip_code: this.state.currentUser.zip_code,
-        country: this.state.currentUser.country,
-        user_type: 0,
-        status: 0,
-        zone_id: parseInt(zone)
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    })
-
-    await this.login()
-
-  }
 
   logOut = () => {
     this.setState({
