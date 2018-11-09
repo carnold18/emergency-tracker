@@ -14,30 +14,6 @@ class AdminContainer extends Component {
         userZones: []
     }
 
-    getZoneUsers = () => {
-
-        const id = parseInt(this.state.selectedZone.split("").slice(2).join(""))
-        console.log(id)
-
-        fetch("http://localhost:3000/zoneUsers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`
-        },
-        body: JSON.stringify({
-          id: id
-        })
-      })
-      .then(response => response.json())
-    //   .then(console.log)
-      .then(zones => {
-          this.setState({
-            zoneUsers: [...this.state.zoneUsers, zones]
-          })
-      })
-    }
-
     handleChange = async (selectedZone) => {
         // debugger
         await this.props.allZones.forEach( zone => 
@@ -50,9 +26,9 @@ class AdminContainer extends Component {
         console.log(`Zone selected:`, selectedZone.innerText)
         console.log(this.state.userZones)
 
-        await this.createUserZone()
+         await this.createUserZone()
 
-        await this.getZoneUsers()
+         await this.getZoneUsers()
         // this.props.getZoneUsers(selectedZone)
     }
 
@@ -74,6 +50,30 @@ class AdminContainer extends Component {
             // console.log('post sent to backend to create UserZone')
     }
 
+    getZoneUsers = () => {
+
+        const id = parseInt(this.state.selectedZone.split("").slice(2).join(""))
+        // console.log(id)
+        // debugger
+        fetch("http://localhost:3000/zoneUsers", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.token}`
+        },
+        body: JSON.stringify({
+          id: id
+        })
+      })
+      .then(response => response.json())
+    //   .then(console.log)
+      .then(zones => {
+          this.setState({
+            zoneUsers: [zones, ...this.state.zoneUsers]
+          })
+      })
+    }
+
     render() {
 
         // console.log(this.props.currentUser.id)
@@ -87,7 +87,7 @@ class AdminContainer extends Component {
                     <div>
                         <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
                         {/* <ZipCodeSelector allZones={this.props.allZones} currentUser={this.props.currentUser} getZoneUsers={this.getZoneUsers} handleChange={this.handleChange} /> */}
-                        <ZipCodeSelectorNew allZones={this.props.allZones} currentUser={this.props.currentUser} getZoneUsers={this.getZoneUsers} handleChange={this.handleChange} />
+                        <ZipCodeSelectorNew allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} />
                         <Map zoneUsers={this.state.zoneUsers} googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}

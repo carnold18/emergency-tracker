@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Map extends Component {
 
     render() {
-        console.log(this.props.zoneUsers.flat())
+        // console.log(this.props.zoneUsers.flat())
         return (
             <GoogleMap
                 defaultZoom={14}

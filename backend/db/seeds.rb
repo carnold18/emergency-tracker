@@ -170,32 +170,32 @@ allPosts = {
         {
             message: "Testing 77002", 
             status:0, 
-            zone_id: 02
+            zone_id: 2
         },
         {
             message: "Testing 77001", 
             status:0, 
-            zone_id: 01
+            zone_id: 1
         },
         {
             message: "Roads flooded in 77007.", 
             status:0, 
-            zone_id: 07
+            zone_id: 7
         },
         {
             message: "Testing 77003", 
             status:0, 
-            zone_id: 03
+            zone_id: 3
         },
         {
             message: "Testing 77006", 
             status:0, 
-            zone_id: 06
+            zone_id: 6
         },
         {
             message: "Help is on the way!", 
             status:0, 
-            zone_id: 06
+            zone_id: 6
         },
     ]
 }
@@ -218,7 +218,7 @@ allUsers = {
             user_type: 1, 
             status: 0, 
             password: 'example', 
-            zone_id: 06
+            zone_id: 6
         },
         {
             first_name: 'Janett', 
@@ -236,7 +236,7 @@ allUsers = {
             user_type: 0, 
             status: 1, 
             password: 'example', 
-            zone_id: 06
+            zone_id: 6
         },
         {
             first_name: 'Doug', 
@@ -254,7 +254,7 @@ allUsers = {
             user_type: 0, 
             status: 2, 
             password: 'example', 
-            zone_id: 07
+            zone_id: 7
         },
         {
             first_name: 'Jessie', 
@@ -272,7 +272,7 @@ allUsers = {
             user_type: 0, 
             status: 2, 
             password: 'example', 
-            zone_id: 06
+            zone_id: 6
         },
         {
             first_name: 'Manin', 
@@ -308,7 +308,7 @@ allUsers = {
             user_type: 0, 
             status: 2, 
             password: 'example', 
-            zone_id: 06
+            zone_id: 6
         },
         {
             first_name: 'JOHN', 

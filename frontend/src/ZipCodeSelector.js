@@ -10,7 +10,7 @@ class ZipCodeSelector extends Component {
     }
 
     handleChange = async (selectedZone) => {
-        // debugger
+        debugger
         await this.props.allZones.forEach( zone => 
             ( zone.zip_code === selectedZone.value ? 
                 this.setState({
@@ -21,9 +21,9 @@ class ZipCodeSelector extends Component {
         console.log(`Zone selected:`, selectedZone)
         console.log(this.state.userZones)
 
-        await this.createUserZone()
+        // await this.createUserZone()
 
-        this.props.getZoneUsers(selectedZone)
+        // this.props.getZoneUsers(selectedZone)
 
     }
 
