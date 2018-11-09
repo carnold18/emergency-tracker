@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import config from './config.js';
 
 class Signup extends Component {
 
@@ -22,26 +23,26 @@ class Signup extends Component {
         })
     }
 
-    // getGeoCoords = async (event) => {
-    //     event.preventDefault();
+    getGeoCoords = async (event) => {
+        event.preventDefault();
 
-    //     const address = this.state.house_number +this.state.street_name +this.state.street_type +this.state.city+this.state.state +this.state.zip_code
-    //     "PUT API KEY HERE"
-    //     const URL = 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.house_number+'+'+this.state.street_name+'+'+this.state.street_type+',+'+this.state.city+',+'+this.state.state+'&key='+API_KEY
-    //     console.log(address)
-    //     console.log(API_KEY)
-    //     console.log(URL)
+        const address = this.state.house_number +this.state.street_name +this.state.street_type +this.state.city+this.state.state +this.state.zip_code
+        const API_KEY = config.GEO_API_KEY
+        const URL = 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.house_number+'+'+this.state.street_name+'+'+this.state.street_type+',+'+this.state.city+',+'+this.state.state+'&key='+API_KEY
+        console.log(address)
+        console.log(API_KEY)
+        console.log(URL)
 
-    //     await fetch(URL)
-    //     .then(res => res.json())
-    //     .then(address => {
-    //          this.setState({
-    //             geocode: address.results[0].geometry.location
-    //         })
-    //     })
+        await fetch(URL)
+        .then(res => res.json())
+        .then(address => {
+             this.setState({
+                geocode: address.results[0].geometry.location
+            })
+        })
 
-    //     await this.signUp()
-    // }
+        await this.signUp()
+    }
 
     signUp =  () => {
         // debugger
