@@ -13,7 +13,7 @@ class Signup extends Component {
         city: null,
         state: null,
         zip_code: null,
-        geocode: {}
+        geocode: {},
     }
 
     handleChange = event => {
@@ -26,7 +26,7 @@ class Signup extends Component {
         event.preventDefault();
 
         const address = this.state.house_number +this.state.street_name +this.state.street_type +this.state.city+this.state.state +this.state.zip_code
-        const API_KEY = 'AIzaSyBgD94pDBzhU0p1Ea6JZMO556STxpVAskg'
+        "PUT API KEY HERE"
         const URL = 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.house_number+'+'+this.state.street_name+'+'+this.state.street_type+',+'+this.state.city+',+'+this.state.state+'&key='+API_KEY
         console.log(address)
         console.log(API_KEY)
@@ -44,12 +44,12 @@ class Signup extends Component {
     }
 
     signUp =  () => {
-        debugger
+        // debugger
     
         const zone = parseInt(this.state.zip_code.split("").slice(2).join(""))
         console.log(zone)
 
-        await fetch("http://localhost:3000/users", {
+        fetch("http://localhost:3000/users", {
           method: "POST",
           body: JSON.stringify({
             email: this.state.email,
@@ -58,13 +58,13 @@ class Signup extends Component {
             first_name: this.state.first_name.toUpperCase(),
             last_name: this.state.last_name.toUpperCase(),
             address_line_1: this.state.house_number+this.state.street_name.toUpperCase()+this.state.street_type.toUpperCase(),
-            address_line_2: this.state.address_line_2,
-            city: this.state.city,
-            state: this.state.state,
+            address_line_2: null,
+            city: this.state.city.toUpperCase(),
+            state: this.state.state.toUpperCase(),
             zip_code: this.state.zip_code,
-            country: this.state.country,
-            lat: 
-            lng:
+            country: null,
+            lat: this.state.geocode.lat,
+            lng: this.state.geocode.lng,
             user_type: 0,
             status: 0,
             zone_id: zone
@@ -73,7 +73,6 @@ class Signup extends Component {
             "Content-Type": "application/json"
           }
         })
-    
     }
 
     render() {
