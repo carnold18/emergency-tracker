@@ -32,6 +32,8 @@ class AdminContainer extends Component {
         // this.props.getZoneUsers(selectedZone)
     }
 
+    //use a filter to filter out all zones that do not match the id of the selected zone, when un-rendering.
+
     createUserZone = () => {
         // debugger
         // console.log(this.props.currentUser.id)
