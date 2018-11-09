@@ -6,6 +6,9 @@ class MessagePost extends Component {
         message: ""
     }
 
+    // grab array of all selected zones and iterate over each one to send a POST to create a 
+    // zone-specific message
+
     submitPost = (event) => {
         event.preventDefault();
         
@@ -21,7 +24,7 @@ class MessagePost extends Component {
                     Authorization: `Bearer ${localStorage.token}`
                   }
             })
-        .then(console.log('post submitted to users'))
+        // .then(console.log('post submitted to users'))
     }
 
     handleChange = event => {

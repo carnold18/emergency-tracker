@@ -23,8 +23,8 @@ class AdminContainer extends Component {
                     selectedZone: selectedZone.innerText,
                     selectedZones: [selectedZone.innerText, ...this.state.selectedZones]
                 }) : null ) )
-        console.log(`Zone selected:`, selectedZone.innerText)
-        console.log(this.state.userZones)
+        // console.log(`Zone selected:`, selectedZone.innerText)
+        // console.log(this.state.userZones)
 
          await this.createUserZone()
 

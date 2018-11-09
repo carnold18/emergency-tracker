@@ -39,7 +39,7 @@ class Map extends Component {
                             break;
                         }
                     })
-                } }
+                } 
             </GoogleMap>
         )
     }
