@@ -11,17 +11,36 @@ class AdminContainer extends Component {
         zoneUsers: [],
         selectedZone: null,
         selectedZones: [],
-        userZones: []
+        userZones: [],
+        zipCodes: []
     }
 
-    handleChange = async (selectedZone) => {
+    // handleChange = async (selectedZone) => {
+    //     // debugger
+    //     await this.props.allZones.forEach( zone => 
+    //         ( zone.zip_code === selectedZone.innerText ? 
+    //             this.setState({
+    //                 userZones: [zone, ...this.state.userZones],
+    //                 selectedZone: selectedZone.innerText,
+    //                 selectedZones: [selectedZone.innerText, ...this.state.selectedZones]
+    //             }) : null ) )
+    //     // console.log(`Zone selected:`, selectedZone.innerText)
+    //     // console.log(this.state.userZones)
+
+    //      await this.createUserZone()
+
+    //      await this.getZoneUsers()
+    //     // this.props.getZoneUsers(selectedZone)
+    // }
+
+    handleChange = async (value) => {
         // debugger
         await this.props.allZones.forEach( zone => 
-            ( zone.zip_code === selectedZone.innerText ? 
+            ( zone.zip_code === value ? 
                 this.setState({
                     userZones: [zone, ...this.state.userZones],
-                    selectedZone: selectedZone.innerText,
-                    selectedZones: [selectedZone.innerText, ...this.state.selectedZones]
+                    selectedZone: value,
+                    selectedZones: [value, ...this.state.selectedZones]
                 }) : null ) )
         // console.log(`Zone selected:`, selectedZone.innerText)
         // console.log(this.state.userZones)
@@ -76,7 +95,19 @@ class AdminContainer extends Component {
       })
     }
 
+    radioButtonDetails = () => {
+        this.setState({
+            zipCodes: [
+                this.props.allZones.map( zone => {
+                  return { value: zone.zip_code, text: zone.zip_code }
+                })
+              ]
+        })
+    }
+
     render() {
+        
+        this.radioButtonDetails();
 
         // console.log(this.props.currentUser.id)
         // console.log(this.props.currentUser.user_type)
@@ -89,7 +120,7 @@ class AdminContainer extends Component {
                     <div>
                         <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
                         {/* <ZipCodeSelector allZones={this.props.allZones} currentUser={this.props.currentUser} getZoneUsers={this.getZoneUsers} handleChange={this.handleChange} /> */}
-                        <ZipCodeSelectorNew allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} />
+                        <ZipCodeSelectorNew allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} />
                         <Map zoneUsers={this.state.zoneUsers} googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
