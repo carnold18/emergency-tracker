@@ -1,70 +1,53 @@
-import React, { Component, PropTypes } from 'react';
-import RadioButtonGroup from 'react-radio-button';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import Checkbox from './Checkbox';
 import './App.css';
 
-class ZipCodeSelectorNew extends Component {
-  constructor() {
-    super();
+export default class ZipCodeSelectorNew extends Component {
+  // constructor() {
+  //   super();
     
-    this.state = {
-      // showMenu: false,
-      selectedValue: undefined,
-      radioOptions: this.props.zipCodes
-    }
-
-    // this.showMenu = this.showMenu.bind(this);
-    // this.closeMenu = this.closeMenu.bind(this);
-  }
-  
-  handleSelection(value) {
-    this.setState({selectedValue: value})
-    this.props.handleChange(value)
-  }
-  // showMenu(event) {
-  //   event.preventDefault();
-    
-  //   this.setState({ showMenu: true }, () => {
-  //     document.addEventListener('click', this.closeMenu);
-  //   });
-  // }
-  
-  // closeMenu(event) {
-    
-  //   if (!this.dropdownMenu.contains(event.target)) {
-      
-  //     this.setState({ showMenu: false }, () => {
-  //       document.removeEventListener('click', this.closeMenu);
-  //     });  
-      
+  //   this.state = {
+  //     // showMenu: false,
+  //     selectedValue: undefined,
+  //     radioOptions: this.props.zipCodes
   //   }
+
+  //   // this.showMenu = this.showMenu.bind(this);
+  //   // this.closeMenu = this.closeMenu.bind(this);
   // }
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          checkedItems: new Map(),
+          checkedArray: []
+      }
+      this.handleChange = this.handleChange.bind(this)
+  }
+  
+  handleChange(e) {
+    const item = e.target.name;
+    const isChecked = e.target.checked;
+    this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(item, isChecked) }));
+
+    this.props.handleChecks(e);
+
+  }
 
   render() {
-
+    // console.log(this.state.checkedItems)
     return (
       <div>
-        <h2>Please Choose An Area:</h2>
-        <div>
-      	    <RadioButtonGroup listOfItems={this.state.radioOptions} selectedItemCallback={(value) => this.handleSelection(value)} />
-      	</div>
-      	<div>
-      	    <h4>Selected radio button: <i>{this.state.selectedValue}</i></h4>
-      	</div>
-        {/* <button onClick={this.showMenu}> Select Zip Codes </button>
         {
-          this.state.showMenu ? (
-              <div className="menu" ref={ (element) => { this.dropdownMenu = element } }>
-                {
-                    this.props.allZones.map(zone => (
-                        <button onClick={(event) => this.props.handleChange(event.target)} zone_id={zone.id}>{zone.zip_code}</button>
-                    ))
-                }
-              </div>
-            ) : ( null )
-        } */}
+          this.props.zipCodes.map(item => (
+            <label key={item.key}>
+              {item.name}
+              <Checkbox name={item.name} checked={this.state.checkedItems.get(item.name)} onChange={this.handleChange} />
+            </label>
+          ))
+        }
       </div>
-    )
+    );
   }
 }
-
-export default ZipCodeSelectorNew;

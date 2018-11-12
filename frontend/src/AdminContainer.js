@@ -12,8 +12,12 @@ class AdminContainer extends Component {
         selectedZone: null,
         selectedZones: [],
         userZones: [],
-        zipCodes: []
+        zipCodes: [],
+        zoneShow: false,
+        checkedArray: []
     }
+
+    
 
     // handleChange = async (selectedZone) => {
     //     // debugger
@@ -33,20 +37,20 @@ class AdminContainer extends Component {
     //     // this.props.getZoneUsers(selectedZone)
     // }
 
-    handleChange = async (value) => {
+    handleChange = async (e) => {
         // debugger
         await this.props.allZones.forEach( zone => 
-            ( zone.zip_code === value ? 
+            ( zone.zip_code === e.target.name ? 
                 this.setState({
                     userZones: [zone, ...this.state.userZones],
-                    selectedZone: value,
-                    selectedZones: [value, ...this.state.selectedZones]
+                    selectedZone: e.target.name,
+                    selectedZones: [e.target.name, ...this.state.selectedZones]
                 }) : null ) )
-        // console.log(`Zone selected:`, selectedZone.innerText)
+        // console.log(`Zone selected:`, e.target.name)
         // console.log(this.state.userZones)
 
-         await this.createUserZone()
-
+        //  await this.createUserZone()
+            
          await this.getZoneUsers()
         // this.props.getZoneUsers(selectedZone)
     }
@@ -89,25 +93,43 @@ class AdminContainer extends Component {
       .then(response => response.json())
     //   .then(console.log)
       .then(zones => {
+    // compare selected zone to checkedZones array and then do action below
           this.setState({
             zoneUsers: [zones, ...this.state.zoneUsers]
           })
       })
     }
 
-    radioButtonDetails = () => {
-        this.setState({
-            zipCodes: [
-                this.props.allZones.map( zone => {
-                  return { value: zone.zip_code, text: zone.zip_code }
-                })
-              ]
+    checkBoxDetails = async () => {
+        // console.log(this.props.allZones)
+        const zipCodes = await this.props.allZones.map( zone => {
+             return { name:zone.zip_code, key: zone.zip_code, label: zone.zip_code }
+         })
+        
+        await this.setState({
+            zipCodes: zipCodes,
+            zoneShow: !this.state.zoneShow
         })
     }
 
+    handleChecks = (e) => {
+        const item = e.target.name;
+        const index = this.state.checkedArray.indexOf(item);
+
+        this.handleChange(e);
+
+        this.state.checkedArray.includes(item) ? (
+            this.state.checkedArray.splice(index, 1)
+              ) : (
+                this.state.checkedArray.push(item)
+          )
+        //   console.log(this.state.checkedArray)
+    }
+    
+
     render() {
-        
-        this.radioButtonDetails();
+        // console.log(this.state.zipCodes)
+        console.log(`UserZones:`, this.state.userZones)
 
         // console.log(this.props.currentUser.id)
         // console.log(this.props.currentUser.user_type)
@@ -119,8 +141,16 @@ class AdminContainer extends Component {
                 { this.props.currentUser.user_type > 0 ? (
                     <div>
                         <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
-                        {/* <ZipCodeSelector allZones={this.props.allZones} currentUser={this.props.currentUser} getZoneUsers={this.getZoneUsers} handleChange={this.handleChange} /> */}
-                        <ZipCodeSelectorNew allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} />
+                        
+                        <button onClick={this.checkBoxDetails}>Select Zones:</button>
+
+                        { this.state.zoneShow ? 
+                            
+                            ( <ZipCodeSelectorNew handleChecks={this.handleChecks} checkedItems={this.state.checkedItems} handleChecks={this.handleChecks} allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} /> )
+                            : null
+
+                        }
+                        
                         <Map zoneUsers={this.state.zoneUsers} googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
