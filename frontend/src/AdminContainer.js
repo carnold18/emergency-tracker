@@ -14,9 +14,9 @@ class AdminContainer extends Component {
         userZones: [],
         zipCodes: [],
         zoneShow: false,
-        checkedArray: []
+        checkedArray: [],
+        newUserArrayList: 0
     }
-
     
 
     // handleChange = async (selectedZone) => {
@@ -40,27 +40,32 @@ class AdminContainer extends Component {
     handleChange = async (e) => {
         // debugger
         await this.props.allZones.forEach( zone => 
-            ( zone.zip_code === e.target.name ? 
+            ( zone.zip_code === e.target.name 
+                // && this.state.selectedZones.includes(e.target.name) !== true
+                ? 
                 this.setState({
                     userZones: [zone, ...this.state.userZones],
                     selectedZone: e.target.name,
-                    selectedZones: [e.target.name, ...this.state.selectedZones]
+                    selectedZones: this.state.checkedArray
                 }) : null ) )
         // console.log(`Zone selected:`, e.target.name)
         // console.log(this.state.userZones)
 
-        //  await this.createUserZone()
+         await this.createUserZone()
             
          await this.getZoneUsers()
         // this.props.getZoneUsers(selectedZone)
     }
 
+    // updateZoneUsers = () => {
+    //     this.state.checkedArray.includes()
+    // }
+
     //use a filter to filter out all zones that do not match the id of the selected zone, when un-rendering.
 
     createUserZone = () => {
-        // debugger
-        // console.log(this.props.currentUser.id)
-        // console.log(this.state.userZones[0].id)
+        console.log(this.props.currentUser.id)
+        console.log(this.state.userZones[0].id)
         fetch("http://localhost:3000/user_zones", {
                 method: "POST",
                 body: JSON.stringify({
@@ -76,28 +81,52 @@ class AdminContainer extends Component {
     }
 
     getZoneUsers = () => {
-
-        const id = parseInt(this.state.selectedZone.split("").slice(2).join(""))
-        // console.log(id)
-        // debugger
-        fetch("http://localhost:3000/zoneUsers", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.token}`
-        },
-        body: JSON.stringify({
-          id: id
+        debugger
+        const currentUsers = this.state.zoneUsers.flat().map( user => {
+            return user.id
         })
-      })
-      .then(response => response.json())
-    //   .then(console.log)
-      .then(zones => {
-    // compare selected zone to checkedZones array and then do action below
-          this.setState({
-            zoneUsers: [zones, ...this.state.zoneUsers]
-          })
-      })
+
+        console.log(`Current User List:`, currentUsers)
+        // DONT EVERRR CHANGE THIS ID 
+       
+        currentUsers.includes(this.state.userZones[0].id) !== true ? (
+            fetch("http://localhost:3000/zoneUsers", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.token}`
+            },
+            body: JSON.stringify({
+                id: this.state.userZones[0].id
+            })
+            })
+                .then(response => response.json())
+                .then(users => {
+        // compare selected zone to checkedZones array and then do action below
+                this.setState({
+                    zoneUsers: [users, ...this.state.zoneUsers],
+                    newUserArrayList: users.length
+                })
+            })
+        ) : (
+            null
+        )
+    }
+
+    reduceUserList = () => {
+        const currentUsersIds = this.state.zoneUsers.flat().map( user => {
+            return user.id
+        })
+        const userList = this.state.zoneUsers.flat();
+        const reducedUserList = [];
+        let i;
+
+        
+        reducedUserList.push(userList.select(() => {
+            for (i=0; i < currentUsersIds.length; i++) {
+                return currentUsersIds[i]
+            }
+        }))
     }
 
     checkBoxDetails = async () => {
@@ -113,6 +142,7 @@ class AdminContainer extends Component {
     }
 
     handleChecks = (e) => {
+
         const item = e.target.name;
         const index = this.state.checkedArray.indexOf(item);
 
@@ -130,7 +160,7 @@ class AdminContainer extends Component {
     render() {
         // console.log(this.state.zipCodes)
         console.log(`UserZones:`, this.state.userZones)
-
+        console.log(`ZoneUsers:`, this.state.zoneUsers)
         // console.log(this.props.currentUser.id)
         // console.log(this.props.currentUser.user_type)
         // console.log(this.props.currentUser.zone_id)
@@ -146,7 +176,7 @@ class AdminContainer extends Component {
 
                         { this.state.zoneShow ? 
                             
-                            ( <ZipCodeSelectorNew handleChecks={this.handleChecks} checkedItems={this.state.checkedItems} handleChecks={this.handleChecks} allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} /> )
+                            ( <ZipCodeSelectorNew checkedItems={this.state.checkedItems} handleChecks={this.handleChecks} allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} /> )
                             : null
 
                         }
