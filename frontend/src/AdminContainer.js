@@ -175,7 +175,7 @@ class AdminContainer extends Component {
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         />
-                        <MessagePost currentUser={this.props.currentUser} />
+                        <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
                     </div>
                 ) : null}
             </div>

@@ -2,29 +2,51 @@ import React, { Component } from 'react';
 
 class MessagePost extends Component {
 
-    state = {
-        message: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: "",
+            zoneIds: []
+        }
+    }
+
+    generateZones = () => {
+        debugger
+
+        const zoneIds = this.props.selectedZones.map( zone => {
+            return parseInt(zone.split("").slice(2).join(""))
+         })
+
+        this.setState({
+            zoneIds: zoneIds
+        })
+
+        console.log(this.state.zoneIds)
     }
 
     // grab array of all selected zones and iterate over each one to send a POST to create a 
     // zone-specific message
 
     submitPost = (event) => {
+
         event.preventDefault();
+
+        this.generateZones();
         
-        fetch("http://localhost:3000/posts", {
+        for (let i = 0; i < this.state.zoneIds.length; i++) {
+            fetch("http://localhost:3000/posts", {
                 method: "POST",
                 body: JSON.stringify({
                     message: this.state.message,
                     status: 0,
-                    zone_id: this.props.currentUser.zone_id
+                    zone_id: this.state.zoneIds[i]
                   }),
                   headers: {
                     "Content-Type": "application/json",
                     Authorization: `Bearer ${localStorage.token}`
                   }
             })
-        // .then(console.log('post submitted to users'))
+        }
     }
 
     handleChange = event => {
