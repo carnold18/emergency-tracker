@@ -9,7 +9,7 @@ class ZoneMessages extends Component {
 
     componentDidMount() {
     // getPosts = () => {
-        let zonePosts = []
+        
 
         fetch("http://localhost:3000/posts", {
             method: "GET",
@@ -18,17 +18,14 @@ class ZoneMessages extends Component {
             }
         })
       .then(response => response.json())
-      .then(posts => (
-          posts.forEach(post => 
-              this.props.currentUser.zone_id === post.zone_id ?
-              zonePosts.push(post) : null
-          )
-      ))
-        
-      this.setState({
-          posts: zonePosts,
-          postsCreated: true
+      .then(posts => {
+          this.setState({
+            posts: posts,
+            postsCreated: true
+        })
       })
+        
+     
       
     }
     // }

@@ -3,6 +3,24 @@ import React, { Component } from 'react';
 
 class Map extends Component {
 
+    // constructor(props) {
+    //     super(props);
+    // }
+
+    // createNewGeoLatCenter = () => {
+    //     const allLats = []
+    //     for (let i = 0; i < this.props.zoneUsers.length; i++) {
+    //         allLats.push(zoneUsers[i].lat)
+    //     }
+    //     return allLats.
+    // }
+
+    // createNewGeoLngCenter = () => {
+    //     return this.props.zoneUsers.map(user => (
+    //         user.lng
+    //     ))
+    // }
+
     render() {
         // console.log(this.props.zoneUsers.flat())
         const green = "http://maps.google.com/mapfiles/ms/icons/green.png"
@@ -22,7 +40,8 @@ class Map extends Component {
                             case 0: 
                             return <Marker position={{ lat: user.lat, lng: user.lng }} 
                                                     opacity={0.7} 
-                                                    icon={{ url: green }} /> 
+                                                    icon={{ url: green }}  
+                                                    /> 
                             break;
                             case 1: 
                             return <Marker position={{ lat: user.lat, lng: user.lng }} 

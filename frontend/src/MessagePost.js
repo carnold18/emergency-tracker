@@ -57,16 +57,23 @@ class MessagePost extends Component {
         console.log(event.target.value)
     };
 
+    showZones = () => {
+        for (let i=0; i < this.props.selectedZones.length; i++) {
+        return <li>{this.props.selectedZones[i]}</li>
+    }}
+
     render() {
+
         return (
             <div className="header">
-                <h4 className="align-center">Send Notifications to Users!</h4>
+                <h4 className="align-center">Send notifications to users in selected zones:</h4>
+                <ul>{this.showZones}</ul>
                 <div className="login">
                     <form onSubmit={e => this.generateZones(e)}>
                         <input
                             type="textarea"
                             onChange={this.handleChange}
-                            placeholder="your message"
+                            placeholder="Message"
                             name="message"
                         />
                         <input type="submit" className="button small special align-center"/>

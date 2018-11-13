@@ -107,6 +107,13 @@ class App extends Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
       }
+    }).then( e => {
+      this.setState({
+        currentUser:{
+          ...this.state.currentUser,
+          status: 0
+        }
+      })
     })
   }
 
@@ -120,6 +127,13 @@ class App extends Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
       }
+    }).then( e => {
+      this.setState({
+        currentUser:{
+          ...this.state.currentUser,
+          status: 1
+        }
+      })
     })
   }
 
@@ -133,6 +147,13 @@ class App extends Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.token}`
       }
+    }).then( e => {
+      this.setState({
+        currentUser:{
+          ...this.state.currentUser,
+          status: 2
+        }
+      })
     })
   }
 
