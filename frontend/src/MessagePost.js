@@ -10,28 +10,29 @@ class MessagePost extends Component {
         }
     }
 
-    generateZones = () => {
-        debugger
+    generateZones = (e) => {
+        e.preventDefault();
+        // debugger
 
-        const zoneIds = this.props.selectedZones.map( zone => {
-            return parseInt(zone.split("").slice(2).join(""))
-         })
+        const zoneIds = this.props.selectedZones.map( zone => (
+             parseInt(zone.split("").slice(2).join(""))
+         ))
 
-        this.setState({
-            zoneIds: zoneIds
-        })
+        this.setState({zoneIds: zoneIds}, () => this.submitPost())
 
         console.log(this.state.zoneIds)
+
     }
 
     // grab array of all selected zones and iterate over each one to send a POST to create a 
     // zone-specific message
 
-    submitPost = (event) => {
+    submitPost = () => {
 
-        event.preventDefault();
+        //e.preventDefault();
 
-        this.generateZones();
+        // this.generateZones();
+        console.log(this.state.zoneIds)
         
         for (let i = 0; i < this.state.zoneIds.length; i++) {
             fetch("http://localhost:3000/posts", {
@@ -53,6 +54,7 @@ class MessagePost extends Component {
         this.setState({
           [event.target.name]: event.target.value
         });
+        console.log(event.target.value)
     };
 
     render() {
@@ -60,7 +62,7 @@ class MessagePost extends Component {
             <div className="header">
                 <h4 className="align-center">Send Notifications to Users!</h4>
                 <div className="login">
-                    <form onSubmit={this.submitPost}>
+                    <form onSubmit={e => this.generateZones(e)}>
                         <input
                             type="textarea"
                             onChange={this.handleChange}
