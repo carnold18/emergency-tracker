@@ -81,15 +81,17 @@ class AdminContainer extends Component {
     }
 
     getZoneUsers = () => {
-        debugger
+        const currentZones = this.state.userZones.map( zone => {
+            return zone.id
+        });
+        const id = this.state.userZones[0].id;
         const currentUsers = this.state.zoneUsers.flat().map( user => {
             return user.id
-        })
+        });
+        const userList = this.state.zoneUsers.flat();
 
-        console.log(`Current User List:`, currentUsers)
-        // DONT EVERRR CHANGE THIS ID 
-       
-        currentUsers.includes(this.state.userZones[0].id) !== true ? (
+        console.log(`Current Zone List:`, currentZones)
+
             fetch("http://localhost:3000/zoneUsers", {
             method: "POST",
             headers: {
@@ -97,36 +99,23 @@ class AdminContainer extends Component {
                 Authorization: `Bearer ${localStorage.token}`
             },
             body: JSON.stringify({
-                id: this.state.userZones[0].id
+                id: id
             })
             })
                 .then(response => response.json())
                 .then(users => {
-        // compare selected zone to checkedZones array and then do action below
-                this.setState({
-                    zoneUsers: [users, ...this.state.zoneUsers],
-                    newUserArrayList: users.length
+                    // console.log(`Includes user?`, currentUsers.includes(users[0].id))
+                    if (users.length > 0 && currentUsers.includes(users[0].id)) {
+                        this.setState({
+                            zoneUsers: userList.filter(userObj => !users.find(userObj2 => userObj.id === userObj2.id))
+                        })
+                    }
+                    else {
+                        this.setState({
+                            zoneUsers: [users, ...this.state.zoneUsers]
+                        })
+                    }
                 })
-            })
-        ) : (
-            null
-        )
-    }
-
-    reduceUserList = () => {
-        const currentUsersIds = this.state.zoneUsers.flat().map( user => {
-            return user.id
-        })
-        const userList = this.state.zoneUsers.flat();
-        const reducedUserList = [];
-        let i;
-
-        
-        reducedUserList.push(userList.select(() => {
-            for (i=0; i < currentUsersIds.length; i++) {
-                return currentUsersIds[i]
-            }
-        }))
     }
 
     checkBoxDetails = async () => {
