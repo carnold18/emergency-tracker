@@ -10,13 +10,17 @@ class UserContainer extends Component {
 
     render() {
         return(
+            this.props.currentUser ? (
             <div className="user">
                 <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
-                <Dropdown changeStatus0={this.props.changeStatus0} changeStatus1={this.props.changeStatus1} changeStatus2={this.props.changeStatus2} />
+                <div>
+                    <Dropdown changeStatus0={this.props.changeStatus0} changeStatus1={this.props.changeStatus1} changeStatus2={this.props.changeStatus2} />
+                    <UserInformation currentUser={this.props.currentUser} />
+                </div>
                 <ZoneMessages currentUser={this.props.currentUser} />
-                <UserInformation currentUser={this.props.currentUser} />
                 <UserTypeButton currentUser={this.props.currentUser} />
             </div>
+            ) : (null)
         );
     }
 }

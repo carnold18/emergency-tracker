@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 
 class EditUserForm extends Component {
 
+    state = {
+        email: this.props.currentUser.email,
+        password: this.props.currentUser.password,
+        phone_number: null,
+        first_name: this.props.currentUser.first_name,
+        last_name: this.props.currentUser.last_name,
+        address_line_1: this.props.currentUser.house_number+this.props.currentUser.street_name+this.props.currentUser.street_type,
+        address_line_2: null,
+        city: this.props.currentUser.city,
+        state: this.props.currentUser.state,
+        zip_code: this.props.currentUser.zip_code,
+        country: null,
+        lat: this.props.currentUser.geocode.lat,
+        lng: this.props.currentUser.geocode.lng,
+        user_type: 0,
+        status: 0,
+        zone_id: this.props.currentUser.zone
+    }
+
     editUser = () => {
         fetch("http://localhost:3000/users/"+this.state.currentUser.id, {
           method: "PATCH",
@@ -13,7 +32,7 @@ class EditUserForm extends Component {
             Authorization: `Bearer ${localStorage.token}`
           }
         })
-      }
+    }
 
     render() {
         return (
