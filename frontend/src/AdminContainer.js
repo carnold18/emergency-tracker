@@ -4,6 +4,7 @@ import Map from './Map';
 import ZipCodeSelectorNew from './ZipCodeSelectorNew';
 import NavBar from './NavBar';
 import MessagePost from './MessagePost';
+import config from './config.js';
 
 class AdminContainer extends Component {
 
@@ -144,6 +145,18 @@ class AdminContainer extends Component {
           )
         //   console.log(this.state.checkedArray)
     }
+
+    // emergency0stats = () => {
+    //     this.state.zoneUsers
+    // }
+
+    // emergency1stats = () => {
+
+    // }
+
+    // emergency2stats = () => {
+
+    // }
     
 
     render() {
@@ -153,6 +166,8 @@ class AdminContainer extends Component {
         // console.log(this.props.currentUser.id)
         // console.log(this.props.currentUser.user_type)
         // console.log(this.props.currentUser.zone_id)
+        const API_KEY = config.GEO_API_KEY
+        const URL = 'https://maps.googleapis.com/maps/api/js?key='+API_KEY+'&v=3.exp&libraries=geometry,drawing,places'
 
         return (
             
@@ -170,7 +185,7 @@ class AdminContainer extends Component {
 
                         }
                         
-                        <Map zoneUsers={this.state.zoneUsers} googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                        <Map zoneUsers={this.state.zoneUsers} googleMapURL={URL}
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}

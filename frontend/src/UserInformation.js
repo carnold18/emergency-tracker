@@ -22,6 +22,9 @@ class UserInformation extends Component {
                 <div>
                     {/* <h2>Welcome, {this.props.currentUser.first_name}</h2> */}
                     <div>
+                        <UserStatusButton currentUser={this.props.currentUser} />
+                    </div>
+                    <div>
                         <p>{this.props.currentUser.address_line_1}</p>
                         <p>{this.props.currentUser.address_line_2}</p>
                         <p>{this.props.currentUser.city}, {this.props.currentUser.state} {this.props.currentUser.zip_code}</p>
@@ -32,9 +35,6 @@ class UserInformation extends Component {
                         ( <EditUserForm currentUser={this.props.currentUser} /> )
                         : null
                     }
-                </div>
-                <div>
-                    <UserStatusButton currentUser={this.props.currentUser} />
                 </div>
             </div>
         )
