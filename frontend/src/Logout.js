@@ -4,8 +4,9 @@ import './App.css';
 class Logout extends Component {
 
     render() {
+        
         return(
-            <button onClick={event => this.props.logOut()}>Logout</button>
+            <button onClick={event => this.props.logOut(event)}>Logout</button>
         )
     }
 }

@@ -12,7 +12,7 @@ class UserContainer extends Component {
         return(
             this.props.currentUser ? (
             <div className="user">
-                <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
+                <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} />
                 <div>
                     <Dropdown changeStatus0={this.props.changeStatus0} changeStatus1={this.props.changeStatus1} changeStatus2={this.props.changeStatus2} />
                     <UserInformation currentUser={this.props.currentUser} />

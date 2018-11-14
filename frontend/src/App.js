@@ -84,6 +84,7 @@ class App extends Component {
           });
         }
       });
+      this.props.history.push('/user')
   };
 
   logOut = () => {
@@ -93,7 +94,8 @@ class App extends Component {
       currentUser: {},
       isLoggedIn: !this.state.isLoggedIn
     })
-    localStorage.token = "";
+    localStorage.clear()
+    this.props.history.push("/login")
   }
 
   changeStatus0 = () => {
@@ -159,40 +161,38 @@ class App extends Component {
 
   render() {
       return (
-        <Router>
         <div className="App">
             <Switch>
-              <Route path="/login" render={() =>  
+              <Route exact path="/login" render={() =>  
                 <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
               }/>
               <Route path="/signup" render={() =>  
                 <Signup signUp={this.signUp} handleChange={this.handleChange} />
               }/>
-              <Route path="/user" render={() =>  
-                <UserContainer logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
+              <Route path="/user" render={(props) =>  
+                <UserContainer {...props} logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
               }/>
-              <Route path="/admin" render={() =>  
-                <AdminContainer logOut={this.logOut} allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
+              <Route path="/admin" render={(props) =>  
+                <AdminContainer {...props} logOut={this.logOut} allZones={this.state.allZones} currentUser={this.state.currentUser}/> 
               }/>
               <Route path="/" render={ () => {
-                if(localStorage.token) {
+                if(!!localStorage.token) {
                   switch(this.state.currentUser.user_type) {
                     case 0: 
-                      return <Redirect to={{pathname:'/user'}} />
+                      return <Redirect to='/user' />
                     // break;
                     case 1:
-                      return <Redirect to={{pathname:'/admin'}} />
+                      return <Redirect to='/admin' />
                     // break;
                     default:
-                      return null;
+                      return <Redirect to='/login' />
                   }
                 } else {
-                  return <Redirect to={{pathname:'/login'}} />
+                  return <Redirect to='/login' />
                 }
               }} />
             </Switch>
         </div>
-        </Router>
       )
   }
 }

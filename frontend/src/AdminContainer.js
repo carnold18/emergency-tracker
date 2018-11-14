@@ -16,7 +16,14 @@ class AdminContainer extends Component {
         zipCodes: [],
         zoneShow: false,
         checkedArray: [],
-        newUserArrayList: 0
+        newUserArrayList: 0,
+        statusSum: 0,
+        status0Count: 0,
+        status1Count: 0,
+        status2Count: 0, 
+        zeroPerc: 0,
+        onePerc: 0,
+        twoPerc: 0
     }
     
 
@@ -146,17 +153,73 @@ class AdminContainer extends Component {
         //   console.log(this.state.checkedArray)
     }
 
-    // emergency0stats = () => {
-    //     this.state.zoneUsers
-    // }
+    emergencyStatusSum = () => {
+        let status = [];
+        let sum = 0;
 
-    // emergency1stats = () => {
+        for (let i = 0; i < this.state.zoneUsers.flat().length; i++) {
+            status.push(this.state.zoneUsers.flat()[i].status)
+        }
+        
+        for (let k = 0; k < status.length; k++) {
+            sum = sum + status[k]
+        }
 
-    // }
+        this.setState({
+            statusSum: sum
+        })
 
-    // emergency2stats = () => {
+        console.log(sum)
 
-    // }
+    }
+    
+    statusCount = () => {
+
+        let two_count = 0;
+        let one_count = 0;
+        let zero_count = 0;
+
+        for (let i = 0; i < this.state.zoneUsers.flat().length; i++) {
+            if (this.state.zoneUsers.flat()[i].status === 2) {
+                two_count++;
+            } else if (this.state.zoneUsers.flat()[i].status === 1) {
+                one_count++;
+            } else if (this.state.zoneUsers.flat()[i].status === 0) {
+                zero_count++;
+            } else return null;
+        }
+
+        console.log(one_count)
+        console.log(zero_count)
+        console.log(two_count)
+
+        this.setState({
+            two_count: two_count,
+            one_count: one_count,
+            zero_count: zero_count
+        })
+    }
+
+    calculateStats = async () => {
+
+        await this.emergencyStatusSum();
+        await this.statusCount();
+
+        const zero = this.state.zero_count/this.state.statusSum*100
+        const one = this.state.one_count/this.state.statusSum*100
+        const two = this.state.two_count/this.state.statusSum*100
+
+        this.setState({
+            zeroPerc: zero,
+            onePerc: one,
+            twoPerc: two
+        })
+
+        console.log(this.state.zeroPerc)
+        console.log(this.state.onePerc)
+        console.log(this.state.twoPerc)
+
+    }
     
 
     render() {
@@ -174,7 +237,7 @@ class AdminContainer extends Component {
             <div>
                 { this.props.currentUser.user_type > 0 ? (
                     <div>
-                        <NavBar currentUser={this.props.currentUser} logOut={this.props.logOut} />
+                        <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} />
                         
                         <button onClick={this.checkBoxDetails}>Select Zones:</button>
 
@@ -190,6 +253,7 @@ class AdminContainer extends Component {
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         />
+                        <button onClick={this.calculateStats}>Show Stats</button>
                         <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
                     </div>
                 ) : null}
