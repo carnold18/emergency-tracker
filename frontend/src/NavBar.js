@@ -5,15 +5,16 @@ class NavBar extends Component {
 
     render() {
         return (
-            <div className="navbar">
-                <h2>MobilEyes Houston</h2>
-                <h2>Welcome, {this.props.currentUser.first_name}</h2>
+            <header id="header">
+				<a class="logo" href="index.html">Welcome, {this.props.currentUser.first_name}</a>
                 <Logout {...this.props} logOut={this.props.logOut} />
                 {this.props.currentUser ?
                     (<button>Admin Stats</button>) : (null)
                 }
-                
-            </div>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
         )
     }
 }
