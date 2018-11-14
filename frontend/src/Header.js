@@ -7,8 +7,7 @@ class Header extends Component {
             <section id="banner">
 				<div class="inner">
 					<h1>MobilEyes Houston</h1>
-					<p>A responsive business oriented template with a video background<br />
-					designed by <a href="https://templated.co/">TEMPLATED</a> and released under the Creative Commons License.</p>
+					<p>Emergency Response Tracking & Resource Deployment Application<a href="https://templated.co/"></a> </p>
 				</div>
 				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
 			</section>

@@ -29,7 +29,7 @@ class Dropdown extends Component {
 
     render() {
         return (
-            <div className='dropdown' style={{background:"red",width:"200px"}} >
+            <div className='dropdown' style={{padding:"2em"}}>
                 <div className="dropdown-button" onClick={this.showDropdownMenu}>Emergency Status</div>
                 {this.state.displayMenu ? (
                     <ul>

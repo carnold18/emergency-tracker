@@ -1,4 +1,4 @@
-/* .App {
+.App {
   text-align: center;
 }
 
@@ -76,8 +76,6 @@ li:hover {
 }
 
 .dropdown-button{
-  width:178px;
-  height:18px;
   background-color:#a88b8b;
   padding:12px;
   border-radius:5px;
@@ -119,7 +117,7 @@ background-color: #426C2A !important;
 
 .radio-button-item:hover .radio-dot:after {
   background-color: #bef65b !important;
-} */
+} 
 
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600");

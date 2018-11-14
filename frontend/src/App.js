@@ -19,8 +19,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    if(localStorage.token) this.fetchData()
+  }
 
-    fetch("http://localhost:3000/profile", {
+  fetchData(){
+    return Promise.all([fetch("http://localhost:3000/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${localStorage.token}`
@@ -33,7 +36,7 @@ class App extends Component {
             currentUser: data
           })
         }
-    })
+    }),
 
     fetch("http://localhost:3000/zones", {
       method: "GET",
@@ -48,7 +51,7 @@ class App extends Component {
             allZones: zones,
             isLoaded: true
           })
-      })
+      })])
   }
 
   handleChange = event => {
@@ -77,14 +80,18 @@ class App extends Component {
           this.setState({
             currentUser: data.user,
             isLoggedIn: !this.state.isLoggedIn
+          }, () => {
+            this.fetchData()
+              .then( () =>  this.props.history.push('/user') )
           });
+          
         } else {
           this.setState({
             loginError: data.error
           });
         }
       });
-      this.props.history.push('/user')
+      
   };
 
   logOut = () => {

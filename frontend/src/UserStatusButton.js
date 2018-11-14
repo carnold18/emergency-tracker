@@ -7,7 +7,7 @@ class UserStatusButton extends Component {
 
     render() {
         return(
-            <div>
+            <div style={{margin:"3em"}}>
             {this.props.currentUser.status === 0 ? (
                 <img src={green} alt="no emergency" />
             ) : null }
