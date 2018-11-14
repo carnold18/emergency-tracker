@@ -3,23 +3,53 @@ import React, { Component } from 'react';
 
 class Map extends Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            allLatsAvg: 29.7604,
+            allLngAvg: -95.3698
+        }
+    }
 
-    // createNewGeoLatCenter = () => {
-    //     const allLats = []
-    //     for (let i = 0; i < this.props.zoneUsers.length; i++) {
-    //         allLats.push(zoneUsers[i].lat)
-    //     }
-    //     return allLats.
-    // }
+    createNewGeoLatCenter = () => {
+      
+        const allLats = []
+        let sum = 0;
 
-    // createNewGeoLngCenter = () => {
-    //     return this.props.zoneUsers.map(user => (
-    //         user.lng
-    //     ))
-    // }
+        for (let i = 0; i < this.props.zoneUsers.length; i++) {
+            for (let j = 0; j < this.props.zoneUsers[i].length; j++) {
+                allLats.push(this.props.zoneUsers[i][j].lat)
+            }
+        }
+         for(let k = 0; k < allLats.length; k++){
+             sum = sum + allLats[k]
+         }
+    
+        let avg = sum/allLats.length
+
+        this.setState({allLatsAvg: avg}, () => console.log(this.state.allLatsAvg))
+        
+        this.createNewGeoLngCenter()
+    }
+
+    createNewGeoLngCenter = () => {
+      
+        const allLng = []
+        let sum = 0;
+
+        for (let i = 0; i < this.props.zoneUsers.length; i++) {
+            for (let j = 0; j < this.props.zoneUsers[i].length; j++) {
+                allLng.push(this.props.zoneUsers[i][j].lng)
+            }
+        }
+         for(let k = 0; k < allLng.length; k++){
+             sum = sum + allLng[k]
+         }
+    
+        let avg = sum/allLng.length
+
+        this.setState({allLngAvg: avg}, () => console.log(this.state.allLngAvg))
+    }
 
     render() {
         // console.log(this.props.zoneUsers.flat())
@@ -31,10 +61,10 @@ class Map extends Component {
     // the default center lat and lng below
 
         return (
-
+            <div>
             <GoogleMap
                 defaultZoom={14}
-                defaultCenter={{ lat: 29.7604, lng: -95.3698 }}>
+                defaultCenter={{ lat: this.state.allLatsAvg, lng: this.state.allLngAvg }}>
                 {  this.props.zoneUsers.flat().map(user => {
                         switch(user.status) {
                             case 0: 
@@ -60,6 +90,8 @@ class Map extends Component {
                     })
                 } 
             </GoogleMap>
+            <button onClick={ this.createNewGeoLatCenter }>TEST</button>
+            </div>
         )
     }
 }
