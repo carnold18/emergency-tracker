@@ -48,6 +48,12 @@ class EditUserForm extends Component {
         })
     }
 
+    handleChange = event => {
+        this.setState({
+          [event.target.name]: event.target.value
+        })
+    }
+
     render() {
         return (
             <div className="header">
@@ -56,70 +62,70 @@ class EditUserForm extends Component {
                     <form onSubmit={this.editUser}>
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="first_name"
                             name="first_name"
                             value={this.state.first_name}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="last_name"
                             name="last_name"
                             value={this.state.last_name}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="address_line_1"
                             name="address_line_1"
                             value={this.state.address_line_1}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="address_line_2"
                             name="address_line_2"
                             value={this.state.address_line_2}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="city"
                             name="city"
                             value={this.state.city}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="state"
                             name="state"
                             value={this.state.state}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="zip_code"
                             name="zip_code"
                             value={this.state.zip_code}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="country"
                             name="country"
                             value={this.state.country}
                         />
                         <input
                             type="text"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="email"
                             name="email"
                             value={this.state.email}
                         />
                         <input
                             type="password"
-                            onChange={this.props.handleChange}
+                            onChange={this.handleChange}
                             placeholder="password"
                             name="password"
                         /><br />

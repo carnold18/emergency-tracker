@@ -28,21 +28,25 @@ class ZoneMessages extends Component {
     render() {
         console.log(this.state.posts)
         return (
+            <div>
+            <h2>Messages for {this.props.currentUser.zip_code}</h2>
             <div class="highlights">
-                <section>
-                    <div class="content">
-                        <header>
-                            <a href="#" class="icon fa-envelope-o"><span class="label">Icon</span></a>
-                            <h3>Messages for {this.props.currentUser.zip_code}</h3>
-                        </header>
-                        { this.state.postsCreated ? this.state.posts.map(post => {
-                            return <p>{post.message}</p>
-                            }) : <p>Currently no messages.</p>
-                        }
-                    </div>
-                </section>
-            </div>
                 
+                { this.state.postsCreated ? this.state.posts.map(post => (
+                    <div >
+                        <section>
+                            <div class="content">
+                                <header>
+                                    <a href="#" class="icon fa-envelope-o"><span class="label">Icon</span></a>
+                                    <h3>{post.message}</h3>
+                                </header>
+                            </div>
+                        </section>
+                    </div>
+                    )) : <p>Currently no messages.</p>
+                }
+            </div>
+            </div>
         )
     }
 }

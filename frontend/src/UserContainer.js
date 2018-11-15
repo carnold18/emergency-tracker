@@ -37,11 +37,11 @@ class UserContainer extends Component {
                     </div> */}
                 </div>
                </section> 
-            { this.props.currentUser ? (
+            {/* { this.props.currentUser ? (
             <div className="user">
                 
             </div>
-            ) : (null) }
+            ) : (null) } */}
             </div>
         );
     }
