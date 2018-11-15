@@ -17,9 +17,11 @@ class UserContainer extends Component {
             <section class="wrapper">
 				<div class="inner">
 					<header class="special">
-						<div>
+                    <ZoneMessages currentUser={this.props.currentUser} />
+						<div className="useraddress">
                             <Dropdown changeStatus0={this.props.changeStatus0} changeStatus1={this.props.changeStatus1} changeStatus2={this.props.changeStatus2} />
                             <UserInformation currentUser={this.props.currentUser} />
+                            <UserTypeButton currentUser={this.props.currentUser} />
                         </div>
 					</header>
 					{/* <div class="highlights">
@@ -37,8 +39,7 @@ class UserContainer extends Component {
                </section> 
             { this.props.currentUser ? (
             <div className="user">
-                <ZoneMessages currentUser={this.props.currentUser} />
-                <UserTypeButton currentUser={this.props.currentUser} />
+                
             </div>
             ) : (null) }
             </div>

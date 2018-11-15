@@ -23,35 +23,37 @@ class App extends Component {
   }
 
   fetchData(){
-    return Promise.all([fetch("http://localhost:3000/profile", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (!data.error) {
-          this.setState({
-            currentUser: data
-          })
+    return Promise.all([
+      fetch("http://localhost:3000/profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
         }
-    }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          if (!data.error) {
+            this.setState({
+              currentUser: data
+            })
+          }
+      }),
 
-    fetch("http://localhost:3000/zones", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
-      }
-    })
-      .then(response => response.json())
-      // .then(console.log)
-      .then(zones => {
-          this.setState({
-            allZones: zones,
-            isLoaded: true
-          })
-      })])
+      fetch("http://localhost:3000/zones", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
+      })
+        .then(response => response.json())
+        // .then(console.log)
+        .then(zones => {
+            this.setState({
+              allZones: zones,
+              isLoaded: true
+            })
+        })
+      ])
   }
 
   handleChange = event => {

@@ -7,13 +7,14 @@ class NavBar extends Component {
         return (
             <header id="header">
 				<a class="logo" href="index.html">Welcome, {this.props.currentUser.first_name}</a>
-                <Logout {...this.props} logOut={this.props.logOut} />
+                <a href="/user">Home</a>
                 {this.props.currentUser ?
-                    (<button>Admin Stats</button>) : (null)
+                    (<a href="/admin">Admin Stats</a>) : (null)
                 }
-				<nav>
+                <Logout {...this.props} logOut={this.props.logOut} />
+				{/* <nav>
 					<a href="#menu">Menu</a>
-				</nav>
+				</nav> */}
 			</header>
         )
     }

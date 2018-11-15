@@ -90,7 +90,7 @@ class Map extends Component {
                     })
                 } 
             </GoogleMap>
-            <button onClick={ this.createNewGeoLatCenter }>Recenter Map</button>
+            <button onClick={ this.createNewGeoLatCenter } style={{marginLeft:'200px'}}>Recenter Map</button>
             </div>
         )
     }

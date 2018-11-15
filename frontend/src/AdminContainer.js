@@ -238,8 +238,8 @@ class AdminContainer extends Component {
                 { this.props.currentUser.user_type > 0 ? (
                     <div>
                         <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} />
-                        
-                        <button onClick={this.checkBoxDetails}>Select Zones:</button>
+                        <br /><h4>View All Registered Users Per Zone</h4>
+                        <p id="select-zones" onClick={this.checkBoxDetails}>Select Zones:</p>
 
                         { this.state.zoneShow ? 
                             
@@ -253,7 +253,7 @@ class AdminContainer extends Component {
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
                         />
-                        <button onClick={this.calculateStats}>Show Stats</button>
+                        <button onClick={this.calculateStats} style={{marginLeft:'-200px'}} >Show Stats</button>
                         <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
                     </div>
                 ) : null}
