@@ -32,7 +32,7 @@ class UserInformation extends Component {
                     </div>
                     <div>
                         <h6 id="div1">Change of Address?</h6>
-                        <button id="div2" onClick={this.changeEditState}>Update Account</button><br /><br />
+                        <button type="button large" onClick={this.changeEditState}>Update Account</button><br /><br />
                     </div>
                     
                     { this.state.editUser ? 

@@ -77,7 +77,7 @@ class MessagePost extends Component {
                             placeholder="Message"
                             name="message"
                         />
-                        <input type="submit" className="button small special align-center"/>
+                        <input type="submit" className="button"/>
                     </form>
                 </div>
             </div>

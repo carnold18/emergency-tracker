@@ -25,7 +25,8 @@ class StatsChart extends Component {
                 { this.props.selectedZones.map(zone => {
                             return <li id='selected-zones'>{zone}</li>})
                 }
-                <table>
+                <div className="table-wrapper">
+                <table className="alt">
                     {/* <tr>
                         <td>Selected Zone Percentages</td>
                     </tr> */}
@@ -39,6 +40,7 @@ class StatsChart extends Component {
                         <td>{Math.round(this.props.twoPerc)}% Danger</td>
                     </tr>
                 </table>
+                </div>
             </div>
         )
     }
