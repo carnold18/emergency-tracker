@@ -66,7 +66,7 @@ class MessagePost extends Component {
 
         return (
             <div className="header">
-                <h4 className="align-center">Send notifications to users in selected zones:</h4>
+                <br /><h4 className="align-center">Send notifications to users in selected zones:</h4>
                 <ul>{this.showZones}</ul>
                 <div className="login">
                     <form onSubmit={e => this.generateZones(e)}>
