@@ -39,6 +39,7 @@ class ZoneMessages extends Component {
                                 <header>
                                     <a href="#" class="icon fa-envelope-o"><span class="label">Icon</span></a>
                                     <h3>{post.message}</h3>
+                                    <h3>Date Posted: {post.created_at}</h3>
                                 </header>
                             </div>
                         </section>
