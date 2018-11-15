@@ -42,6 +42,7 @@ class Signup extends Component {
         })
 
         await this.signUp()
+        await this.props.login(event)
     }
 
     signUp =  () => {

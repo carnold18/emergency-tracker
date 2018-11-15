@@ -176,7 +176,7 @@ class App extends Component {
                 <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
               }/>
               <Route path="/signup" render={() =>  
-                <Signup signUp={this.signUp} handleChange={this.handleChange} />
+                <Signup login={this.login} signUp={this.signUp} handleChange={this.handleChange} />
               }/>
               <Route path="/user" render={(props) =>  
                 <UserContainer {...props} logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>

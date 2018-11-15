@@ -22,6 +22,7 @@ class LoginForm extends Component {
                             name="password"
                         /><br /><br />
                         <input type="submit" className="button small special align-center"/>
+                        <br /><br /><a href="/signup">Or Sign Up!</a>
                     </form>
                 </div>
             </div>

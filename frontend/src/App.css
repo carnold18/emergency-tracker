@@ -33,6 +33,7 @@
 
 .useraddress {
   background: rgba(21, 48, 99, 0.2);
+  border-radius: .25;
 }
 
 #div1 {

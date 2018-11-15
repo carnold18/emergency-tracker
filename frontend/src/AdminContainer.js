@@ -263,7 +263,7 @@ class AdminContainer extends Component {
                         
                         <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
                     </div>
-                ) : null}
+                ) : <p>User access denied. Please request admin status to view.</p>}
             </div>
         )
     }

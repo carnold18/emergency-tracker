@@ -7,11 +7,11 @@ class EditUserForm extends Component {
         this.state = {
             email: this.props.currentUser.email || '',
             password: this.props.currentUser.password,
-            phone_number: this.props.phone_number,
+            phone_number: this.props.currentUser.phone_number,
             first_name: this.props.currentUser.first_name,
             last_name: this.props.currentUser.last_name,
-            address_line_1: this.props.currentUser.house_number+this.props.currentUser.street_name+this.props.currentUser.street_type,
-            address_line_2: null,
+            address_line_1: this.props.currentUser.address_line_1,
+            address_line_2: this.props.currentUser.address_line_2,
             city: this.props.currentUser.city,
             state: this.props.currentUser.state,
             zip_code: this.props.currentUser.zip_code,
@@ -31,15 +31,16 @@ class EditUserForm extends Component {
           body: JSON.stringify({
             email: this.props.currentUser.email,
             password: this.props.currentUser.password,
-            phone_number: this.props.phone_number,
-            first_name: this.props.currentUser.first_name,
-            last_name: this.props.currentUser.last_name,
-            address_line_1: this.props.currentUser.house_number+this.props.currentUser.street_name+this.props.currentUser.street_type,
-            address_line_2: null,
-            city: this.props.currentUser.city,
-            state: this.props.currentUser.state,
-            zip_code: this.props.currentUser.zip_code,
-            country: null
+            phone_number: this.state.phone_number,
+            first_name: this.state.first_name,
+            last_name: this.state.last_name,
+            address_line_1: this.state.address_line_1,
+            address_line_2: this.state.address_line_2,
+            city: this.state.city,
+            state: this.state.state,
+            zip_code: this.state.zip_code,
+            country: this.state.country,
+            phone_number: this.state.phone_number
           }),
           headers: {
             "Content-Type": "application/json",
@@ -55,6 +56,7 @@ class EditUserForm extends Component {
     }
 
     render() {
+        console.log(this.props.currentUser)
         return (
             <div className="header">
                 <h4 className="align-center">Edit Account Information:</h4>
@@ -122,6 +124,13 @@ class EditUserForm extends Component {
                             placeholder="email"
                             name="email"
                             value={this.state.email}
+                        />
+                        <input
+                            type="text"
+                            onChange={this.handleChange}
+                            placeholder="phone_number"
+                            name="phone_number"
+                            value={this.state.phone_number}
                         />
                         <input
                             type="password"
