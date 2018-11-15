@@ -56,6 +56,10 @@
   /* border-radius: 25px; */
 }
 
+#selected-zones {
+  text-decoration: none;
+}
+
 .checkbox-item {
   color: black !important;
 }
@@ -93,8 +97,7 @@ ul {
   z-index: 1;
 }
 
-li a {
-  color: #000;
+/* li a {
   text-decoration: none;
 }
 
@@ -110,7 +113,7 @@ li:last-child {
 li:hover {
   background-color: #e5e5e5;
   color: white;
-}
+} */
 
 .dropdown-button{
   background-color:#a88b8b;

@@ -2,12 +2,6 @@ import React, { Component } from 'react';
 import { Chart } from 'react-google-charts';
 
 class StatsChart extends Component {
-
-    mapSelectedZones = () => {
-        { for (let i=0; i < this.props.selectedZones.length; i++) {
-           return <p>{this.props.selectedZones[i]}</p>
-        } }
-    }
     
     render() {
         console.log(this.props.selectedZones)
@@ -28,9 +22,9 @@ class StatsChart extends Component {
             // </div>
             <div id="stats-chart">
                 <br /><h3>Selected Zone Percentages</h3>
-                <div>
-                    {this.mapSelectedZones()}
-                </div>
+                { this.props.selectedZones.map(zone => {
+                            return <li id='selected-zones'>{zone}</li>})
+                }
                 <table>
                     {/* <tr>
                         <td>Selected Zone Percentages</td>

@@ -71,6 +71,7 @@ class MessagePost extends Component {
                 <div className="login">
                     <form onSubmit={e => this.generateZones(e)}>
                         <input
+                            className="textarea"
                             type="textarea"
                             onChange={this.handleChange}
                             placeholder="Message"
