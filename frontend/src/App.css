@@ -859,7 +859,7 @@ table.alt tbody tr td {
     width: calc(33.3333333333% + -0.5rem); }
   .highlights .content {
     border-radius: 4px;
-    height: 100%;
+    width: 102%;
     padding: 3rem;
     text-align: center; }
     .highlights .content .icon {
