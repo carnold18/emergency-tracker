@@ -4,6 +4,7 @@ import Map from './Map';
 import ZipCodeSelectorNew from './ZipCodeSelectorNew';
 import NavBar from './NavBar';
 import MessagePost from './MessagePost';
+import StatsChart from './StatsChart';
 import config from './config.js';
 
 class AdminContainer extends Component {
@@ -20,10 +21,11 @@ class AdminContainer extends Component {
         statusSum: 0,
         status0Count: 0,
         status1Count: 0,
-        status2Count: 0, 
+        status2Count: 0,
         zeroPerc: 0,
         onePerc: 0,
-        twoPerc: 0
+        twoPerc: 0,
+        statsSelected: false
     }
     
 
@@ -212,7 +214,8 @@ class AdminContainer extends Component {
         this.setState({
             zeroPerc: zero,
             onePerc: one,
-            twoPerc: two
+            twoPerc: two,
+            statsSelected: !this.state.statsSelected
         })
 
         console.log(this.state.zeroPerc)
@@ -238,8 +241,8 @@ class AdminContainer extends Component {
                 { this.props.currentUser.user_type > 0 ? (
                     <div>
                         <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} />
-                        
-                        <button onClick={this.checkBoxDetails}>Select Zones:</button>
+                        <br /><h4>View All Registered Users Per Zone</h4>
+                        <p id="select-zones" onClick={this.checkBoxDetails}>Select Zones:</p>
 
                         { this.state.zoneShow ? 
                             
@@ -252,8 +255,12 @@ class AdminContainer extends Component {
                         loadingElement={<div style={{ height: `100%` }} />}
                         containerElement={<div style={{ height: `400px` }} />}
                         mapElement={<div style={{ height: `100%` }} />}
-                        />
-                        <button onClick={this.calculateStats}>Show Stats</button>
+                        /><br />
+                        <button onClick={this.calculateStats} style={{marginLeft:'-200px'}} >Show Stats</button>
+                        { this.state.statsSelected ? (
+                            <StatsChart selectedZones={this.state.selectedZones} zeroPerc={this.state.zeroPerc} onePerc={this.state.onePerc} twoPerc={this.state.twoPerc}/>) : null
+                        }
+                        
                         <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
                     </div>
                 ) : null}

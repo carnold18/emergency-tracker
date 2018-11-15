@@ -142,7 +142,7 @@ class Signup extends Component {
                             onChange={this.handleChange}
                             placeholder="password"
                             name="password"
-                        />
+                        /><br /><br />
                         <input type="submit" className="button small special align-center"/>
                     </form>
                 </div>

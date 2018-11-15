@@ -37,10 +37,10 @@ export default class ZipCodeSelectorNew extends Component {
   render() {
     // console.log(this.state.checkedItems)
     return (
-      <div>
+      <div id="checkbox-list">
         {
           this.props.zipCodes.map(item => (
-            <label key={item.key}>
+            <label className="checkbox-item" key={item.key}>
               {item.name}
               <Checkbox name={item.name} checked={this.state.checkedItems.get(item.name)} onChange={this.handleChange} />
             </label>

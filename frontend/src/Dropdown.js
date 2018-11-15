@@ -29,15 +29,15 @@ class Dropdown extends Component {
 
     render() {
         return (
-            <div className='dropdown' style={{background:"red",width:"200px"}} >
+            <div className='dropdown' style={{padding:"2em"}}>
                 <div className="dropdown-button" onClick={this.showDropdownMenu}>Emergency Status</div>
                 {this.state.displayMenu ? (
-                    <ul>
-                        <li className="low" onClick={this.props.changeStatus0}>Low</li>
+                    <ul className="plain" style={{positionL:15}}>
+                        <li className="low" onClick={this.props.changeStatus0} style={{margin:"20"}}>Low</li>
                         <li className="medium" onClick={this.props.changeStatus1}>Potential Danger</li>
                         <li className="high" onClick={this.props.changeStatus2}>Extreme Danger</li>
                     </ul>
-                ) : null
+                    ) : null
                 }
             </div>
         );

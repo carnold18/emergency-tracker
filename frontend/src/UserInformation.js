@@ -25,12 +25,16 @@ class UserInformation extends Component {
                         <UserStatusButton currentUser={this.props.currentUser} />
                     </div>
                     <div>
-                        <p>{this.props.currentUser.address_line_1}</p>
-                        <p>{this.props.currentUser.address_line_2}</p>
-                        <p>{this.props.currentUser.city}, {this.props.currentUser.state} {this.props.currentUser.zip_code}</p>
-                        <p>{this.props.currentUser.phone_number}</p>
+                        <h3>{this.props.currentUser.address_line_1}</h3>
+                        <h3>{this.props.currentUser.address_line_2}</h3>
+                        <h3>{this.props.currentUser.city}, {this.props.currentUser.state} {this.props.currentUser.zip_code}</h3>
+                        <h3>{this.props.currentUser.phone_number}</h3>
                     </div>
-                    <button onClick={this.changeEditState}>Edit?</button>
+                    <div>
+                        <h6 id="div1">Change of Address?</h6>
+                        <button id="div2" onClick={this.changeEditState}>Update Account</button><br /><br />
+                    </div>
+                    
                     { this.state.editUser ? 
                         ( <EditUserForm currentUser={this.props.currentUser} /> )
                         : null

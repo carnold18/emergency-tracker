@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import './App.css';
 
 class Header extends Component {
 
     render() {
         return(
-            <div className="header">
-                <h1>MobileEyes</h1>
-                <h2>Houston</h2>
-                {/* <button onClick={event => this.props.logOut()}>Logout</button> */}
-            </div>
+            <section id="banner">
+				<div class="inner">
+					<h1>MobilEyes Houston</h1>
+					<p>Emergency Response Tracking & Resource Deployment Application<a href="https://templated.co/"></a> </p>
+				</div>
+				<video autoplay loop muted playsinline src="images/banner.mp4"></video>
+			</section>
         )
     }
 }
