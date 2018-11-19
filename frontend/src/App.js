@@ -20,9 +20,11 @@ class App extends Component {
 
   componentDidMount() {
     if(localStorage.token) this.fetchData()
+    console.log("1")
   }
 
   fetchData(){
+    console.log("2")
     return Promise.all([
       fetch("http://localhost:3000/profile", {
         method: "GET",
@@ -60,10 +62,14 @@ class App extends Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+    console.log(event.target.value)
   }
 
-  logIn = event => {
+  logIn = (event) => {
     event.preventDefault();
+    // console.log(this.state.email)
+    // console.log(this.state.password)
+    // console.log("3")
     
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -176,7 +182,7 @@ class App extends Component {
                 <LoginForm logIn={this.logIn} handleChange={this.handleChange} />
               }/>
               <Route path="/signup" render={() =>  
-                <Signup login={this.login} signUp={this.signUp} handleChange={this.handleChange} />
+                <Signup logIn={this.logIn} signUp={this.signUp} handleChange={this.handleChange} />
               }/>
               <Route path="/user" render={(props) =>  
                 <UserContainer {...props} logOut={this.logOut} currentUser={this.state.currentUser} changeStatus0={this.changeStatus0} changeStatus1={this.changeStatus1} changeStatus2={this.changeStatus2}/>
