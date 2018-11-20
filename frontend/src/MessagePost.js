@@ -71,13 +71,12 @@ class MessagePost extends Component {
                 <div className="login">
                     <form onSubmit={e => this.generateZones(e)}>
                         <input
-                            className="textarea"
-                            type="textarea"
+                            type="text"
                             onChange={this.handleChange}
                             placeholder="Message"
                             name="message"
                         />
-                        <input type="submit" className="button"/>
+                        <input type="submit" className="button" size="35"/>
                     </form>
                 </div>
             </div>
