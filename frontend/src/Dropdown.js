@@ -30,12 +30,12 @@ class Dropdown extends Component {
     render() {
         return (
             <div className='dropdown' style={{padding:"2em"}}>
-                <div className="dropdown-button" onClick={this.showDropdownMenu}>Emergency Status</div>
+                <div className="dropdown-button" onClick={this.showDropdownMenu}>Change Your Status</div>
                 {this.state.displayMenu ? (
                     <ul className="plain" style={{positionL:15}}>
                         <li className="low" onClick={this.props.changeStatus0} style={{margin:"20"}}>Low</li>
-                        <li className="medium" onClick={this.props.changeStatus1}>Potential Danger</li>
-                        <li className="high" onClick={this.props.changeStatus2}>Extreme Danger</li>
+                        <li className="medium" onClick={this.props.changeStatus1}>Medium</li>
+                        <li className="high" onClick={this.props.changeStatus2}>High</li>
                     </ul>
                     ) : null
                 }

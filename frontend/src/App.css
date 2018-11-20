@@ -726,12 +726,23 @@ ul {
   margin: 0 0 2rem 0;
   padding-left: 1rem; }
   ul li {
-    padding-left: 0.325rem; }
+    padding-left: 0.325rem;
+    border: solid 1px;
+    border-color: rgba(123, 128, 206, 0.562);  }
   ul.plain {
     list-style: none;
-    padding-left: 0; }
+    padding-left: 0;  }
     ul.plain li {
-      margin-bottom: 1rem; }
+      margin-bottom: 0; }
+    ul.plain li.low:hover {
+      background-color: rgba(56, 131, 108, 0.5);
+    }
+    ul.plain li.medium:hover {
+      background-color: rgba(255, 253, 138, 0.925);
+    }
+    ul.plain li.high:hover {
+      background-color: rgba(235, 69, 69, 0.5);
+    }
       ul.plain li .icon {
         border-radius: 4px;
         color: #ffffff;
