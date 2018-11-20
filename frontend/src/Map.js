@@ -69,18 +69,18 @@ class Map extends Component {
                         switch(user.status) {
                             case 0: 
                             return <Marker position={{ lat: user.lat, lng: user.lng }} 
-                                                    opacity={0.7} 
+                                                    opacity={0.2} 
                                                     icon={{ url: green }}  
                                                     /> 
                             break;
                             case 1: 
                             return <Marker position={{ lat: user.lat, lng: user.lng }} 
-                                                    opacity={0.7} 
+                                                    opacity={0.6} 
                                                     icon={{ url: yellow }} /> 
                             break;
                             case 2: 
                             return <Marker position={{ lat: user.lat, lng: user.lng }} 
-                                                    opacity={0.7} 
+                                                    opacity={0.6} 
                                                     icon={{ url: red }} /> 
                             break;
                             default: 
