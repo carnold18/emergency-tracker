@@ -19,7 +19,7 @@ class UserTypeButton extends Component {
     render() {
         return (
             <div>
-                <button type="button" className="button" onClick={this.submitAdminRequest}>Request Admin Status</button><br /><br />
+                <button type="button" className="button large" onClick={this.submitAdminRequest}>Request Admin Status</button><br /><br />
             </div>
         )
     }

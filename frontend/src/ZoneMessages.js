@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import red from './red-circle-64.png';
+import green from './green-circle-64.png';
+import yellow from './yellow-circle-64.png';
 
 class ZoneMessages extends Component {
 
@@ -38,7 +41,21 @@ class ZoneMessages extends Component {
                             <div class="content">
                                 <header>
                                     <a href="#" class="icon fa-envelope-o"><span class="label">Icon</span></a>
-                                    <h3>{post.message}</h3>
+                                    <h3>Your Area's Status:</h3>
+                                    {
+                                        <div style={{margin:"2em"}}>
+                                            {post.status === 0 ? (
+                                                <img src={green} alt="no emergency" width="65"/>
+                                            ) : null }
+                                            {post.status === 1 ? (
+                                                <img src={yellow} alt="mid emergency" width="65" />
+                                            ) : null }
+                                            {post.status === 2 ? (
+                                                <img src={red} alt="high emergency" width="65" />
+                                            ) : null }
+                                        </div>
+                                    }
+                                    <h3>Post: {post.message}</h3>
                                     <h3>Date Posted: {post.created_at.split("").splice(0,10).join("")}</h3>
                                 </header>
                             </div>

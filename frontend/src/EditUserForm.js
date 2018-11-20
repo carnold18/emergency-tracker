@@ -138,8 +138,8 @@ class EditUserForm extends Component {
                             placeholder="password"
                             name="password"
                         /><br />
-                        <input type="submit" className="button"/>
-                        <button>Delete Account</button>
+                        <input type="submit" className="button small"/>
+                        <button type="button" className="button small">Delete Account</button>
                     </form>
                 </div>
             </div>
