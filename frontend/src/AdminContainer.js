@@ -191,9 +191,9 @@ class AdminContainer extends Component {
             } else return null;
         }
 
-        console.log(one_count)
-        console.log(zero_count)
-        console.log(two_count)
+        console.log(`Status 0 Total:`, zero_count)
+        console.log(`Status 1 Total:`, one_count)
+        console.log(`Status 2 Total:`, two_count)
 
         this.setState({
             two_count: two_count,
@@ -218,9 +218,9 @@ class AdminContainer extends Component {
             statsSelected: !this.state.statsSelected
         })
 
-        console.log(this.state.zeroPerc)
-        console.log(this.state.onePerc)
-        console.log(this.state.twoPerc)
+        console.log(`Status 0 %:`, this.state.zeroPerc)
+        console.log(`Status 1 %:`, this.state.onePerc)
+        console.log(`Status 2 %:`, this.state.twoPerc)
 
     }
     

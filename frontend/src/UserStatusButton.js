@@ -9,13 +9,13 @@ class UserStatusButton extends Component {
         return(
             <div style={{margin:"2em"}}>
             {this.props.currentUser.status === 0 ? (
-                <img src={green} alt="no emergency" width="100"/>
+                <img src={green} alt="no emergency" width="90"/>
             ) : null }
             {this.props.currentUser.status === 1 ? (
-                <img src={yellow} alt="mid emergency" width="100" />
+                <img src={yellow} alt="mid emergency" width="90" />
             ) : null }
             {this.props.currentUser.status === 2 ? (
-                <img src={red} alt="high emergency" width="100" />
+                <img src={red} alt="high emergency" width="90" />
             ) : null }
             </div>
         )
