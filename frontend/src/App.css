@@ -56,7 +56,7 @@ label.checkbox-item:hover {
 }
 
 #checkbox-list {
-  height: 8em;
+  height: 25em;
   overflow: auto;
   background: rgba(30, 60, 116, 0.2);
   color: rgb(66, 14, 14) !important;
@@ -70,6 +70,26 @@ label.checkbox-item:hover {
 #selected-zones {
   text-decoration: none;
 }
+
+/* .a {
+  float: left;
+  width: 3 em;
+} */
+
+.a {
+  vertical-align: top;
+  display: inline-block;
+  width: 25%;
+}
+
+.b {
+  display: inline-block;
+  width: 70%;
+}
+
+/* .b {
+  float: right;
+} */
 
 .checkbox-item {
   color: rgb(70, 56, 56) !important;

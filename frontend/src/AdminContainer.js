@@ -240,30 +240,36 @@ class AdminContainer extends Component {
             <div>
                 { this.props.currentUser.user_type > 0 ? (
                     <div>
-                        <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} />
-                        <br /><h4>View All Registered Users Per Zone</h4>
-                        <p id="select-zones" onClick={this.checkBoxDetails}>Select Zones:</p>
+                        <NavBar {...this.props} currentUser={this.props.currentUser} logOut={this.props.logOut} /><br />
+                        <span id="admin-container">
+                            <div className="a">
+                                <br /><h4>View All Registered Users Per Zone</h4>
+                                <p id="select-zones" onClick={this.checkBoxDetails}>Select Zones:</p>
 
-                        { this.state.zoneShow ? 
-                            
-                            ( <ZipCodeSelectorNew checkedItems={this.state.checkedItems} handleChecks={this.handleChecks} allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} /> )
-                            : null
+                                { this.state.zoneShow ? 
+                                    
+                                    ( <ZipCodeSelectorNew checkedItems={this.state.checkedItems} handleChecks={this.handleChecks} allZones={this.props.allZones} currentUser={this.props.currentUser} handleChange={this.handleChange} zipCodes={this.state.zipCodes} /> )
+                                    : null
 
-                        }
-                        
-                        <Map zoneUsers={this.state.zoneUsers} googleMapURL={URL}
-                        loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `400px` }} />}
-                        mapElement={<div style={{ height: `100%` }} />}
-                        /><br />
-                        <button type="button" className="button small" onClick={this.calculateStats} style={{marginLeft:'-200px'}} >Show Stats</button>
-                        { this.state.statsSelected ? (
-                            <StatsChart selectedZones={this.state.selectedZones} zeroPerc={this.state.zeroPerc} onePerc={this.state.onePerc} twoPerc={this.state.twoPerc}/>) : null
-                        }
-                        
-                        <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
+                                }
+                            </div>
+                            <div className="b">
+                                <Map zoneUsers={this.state.zoneUsers} googleMapURL={URL}
+                                loadingElement={<div style={{ height: `100%` }} />}
+                                containerElement={<div style={{ height: `400px` }} />}
+                                mapElement={<div style={{ height: `100%` }} />}
+                                /><br />
+                                <button type="button" className="button small" onClick={this.calculateStats} style={{marginLeft:'-200px'}} >Show Stats</button>
+                                { this.state.statsSelected ? (
+                                    <StatsChart selectedZones={this.state.selectedZones} zeroPerc={this.state.zeroPerc} onePerc={this.state.onePerc} twoPerc={this.state.twoPerc}/>) : null
+                                }
+                                
+                                <MessagePost currentUser={this.props.currentUser} zipCodes={this.state.zipCodes} selectedZones={this.state.selectedZones} />
+                            </div>
+                        </span>
                     </div>
-                ) : <p>User access denied. Please request admin status to view.</p>}
+                ) : <p>User access denied. Please request admin status to view.</p>
+                }
             </div>
         )
     }
