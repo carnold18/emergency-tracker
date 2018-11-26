@@ -61,7 +61,8 @@ class Map extends Component {
     // the default center lat and lng below
         return (
             <div>
-            <GoogleMap
+            <GoogleMap 
+                id="map"
                 defaultZoom={13}
                 center={{ lat: this.state.allLatsAvg, lng: this.state.allLngAvg }}
             >

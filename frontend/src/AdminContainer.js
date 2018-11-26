@@ -253,6 +253,7 @@ class AdminContainer extends Component {
 
                                 }
                             </div>
+                            <div id="spacer"></div>
                             <div className="b">
                                 <Map zoneUsers={this.state.zoneUsers} googleMapURL={URL}
                                 loadingElement={<div style={{ height: `100%` }} />}

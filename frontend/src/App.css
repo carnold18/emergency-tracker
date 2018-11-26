@@ -71,11 +71,6 @@ label.checkbox-item:hover {
   text-decoration: none;
 }
 
-/* .a {
-  float: left;
-  width: 3 em;
-} */
-
 .a {
   vertical-align: top;
   display: inline-block;
@@ -87,9 +82,14 @@ label.checkbox-item:hover {
   width: 70%;
 }
 
-/* .b {
-  float: right;
-} */
+#spacer {
+  display: inline-block;
+  width: 1%;
+}
+
+#map {
+  border: .2px solid #3a4c6e;
+}
 
 .checkbox-item {
   color: rgb(70, 56, 56) !important;

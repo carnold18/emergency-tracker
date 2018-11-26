@@ -75,8 +75,9 @@ class MessagePost extends Component {
                             onChange={this.handleChange}
                             placeholder="Message"
                             name="message"
+                            style={{display:"inline-block"}}
                         />
-                        <input type="submit" className="button small"/>
+                        <input type="submit" className="button small" style={{display:"inline-block", margin:"2px"}}/>
                     </form>
                 </div>
             </div>
